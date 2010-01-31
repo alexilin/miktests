@@ -1,18 +1,23 @@
-<h1>Listing subjects</h1>
+<h1><%= @teacher.name %>'s subjects</h1>
 
 <table>
   <tr>
+    <th align="left" style="width:300px">Title</th>
+    <th align="left">Actions</th>
   </tr>
 
 <% @subjects.each do |subject| %>
   <tr>
-    <td><%= link_to 'Show', subject %></td>
-    <td><%= link_to 'Edit', edit_subject_path(subject) %></td>
-    <td><%= link_to 'Destroy', subject, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to subject.title, user_subject_tests_path(@teacher, subject) %></td>
+    <td>
+    <%= link_to 'edit', edit_user_subject_path(@teacher, subject) %>
+    <%= link_to 'delete', user_subject_path(@teacher, subject), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New subject', new_subject_path %>
+<% if owner? %>           
+  <%= link_to 'New subject', new_user_subject_path %>
+<% end %>

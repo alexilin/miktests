@@ -1,0 +1,19 @@
+<h1><%= @teacher.name %>'s <%= @subject.title %> tests</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+  </tr>
+
+<% @tests.each do |test| %>
+  <tr>  
+    <td><%= link_to "#{test.title} (#{test.questions.count})", edit_user_subject_test_path(@teacher, @subject, test) %></td>
+    <td><%= link_to 'Destroy', user_subject_test_path(@teacher, @subject, test), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New test', new_user_subject_test_path %>
+<%= link_to 'Go to all subjects', user_subjects_path %>

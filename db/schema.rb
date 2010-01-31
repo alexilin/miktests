@@ -9,11 +9,52 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100131115419) do
+ActiveRecord::Schema.define(:version => 20100131141054) do
+
+  create_table "answers", :force => true do |t|
+    t.integer  "question_id"
+    t.text     "answer"
+    t.boolean  "correct"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "questions", :force => true do |t|
+    t.integer  "test_id"
+    t.text     "question"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "subjects", :force => true do |t|
     t.integer  "teacher_id"
     t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "test_results", :force => true do |t|
+    t.integer  "test_id"
+    t.integer  "user_id"
+    t.integer  "correct_count"
+    t.integer  "incorrect_count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tests", :force => true do |t|
+    t.integer  "subject_id"
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_answers", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "test_id"
+    t.integer  "question_id"
+    t.integer  "answer_id"
+    t.boolean  "correct"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -28,7 +69,7 @@ ActiveRecord::Schema.define(:version => 20100131115419) do
     t.datetime "updated_at"
     t.string   "remember_token",            :limit => 40
     t.datetime "remember_token_expires_at"
-    t.string   "role"
+    t.integer  "role",                                     :default => 0
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true

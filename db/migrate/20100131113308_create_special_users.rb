@@ -1,11 +1,11 @@
 class CreateSpecialUsers < ActiveRecord::Migration
   def self.up
     change_table("users") do |t|
-      t.string :role 
+      t.integer :role, :default => 0 
     end             
     
     User.create :login => 'alex.ilin', :name => "Alex Ilin", :email => "alex.a.ilin@gmail.com", 
-      :password => "initial_password", :password_confirmation => "initial_password", :role => "admin"
+      :password => "initial_password", :password_confirmation => "initial_password", :role => Role::ADMIN
   end
 
   def self.down

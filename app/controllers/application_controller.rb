@@ -11,9 +11,17 @@ class ApplicationController < ActionController::Base
   filter_parameter_logging :password, :password_confirmation
   
   protected
+                                    
+  def load_teacher                                               
+    @teacher = User.find params[:user_id], :conditions => ["role = ?", Role::TEACHER]
+  end
+
+  def load_subject                                               
+    @subject = Subject.find params[:subject_id]
+  end
   
   def only_for_admins
-    if !logged_in? || !current_user.is_in_role?(:admin)
+    if !logged_in? || !current_user.admin?
       store_location
       redirect_to(login_path)
     end

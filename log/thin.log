@@ -8,3 +8,9 @@
 >> Thin web server (v1.0.0 codename That's What She Said)
 >> Maximum connections set to 1024
 >> Listening on 0.0.0.0:3000, CTRL+C to stop
+>> Exiting!
+>> Writing PID to tmp/pids/thin.pid
+>> Using rails adapter
+>> Thin web server (v1.0.0 codename That's What She Said)
+>> Maximum connections set to 1024
+>> Listening on 0.0.0.0:3000, CTRL+C to stop

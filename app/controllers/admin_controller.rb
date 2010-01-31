@@ -1,8 +1,9 @@
 class AdminController < ApplicationController
+
   before_filter :only_for_admins
   
   def index
-    @teachers = User.all(:conditions => "role = 'teacher'")
+    @teachers = User.all(:conditions => ["role = ?", Role::TEACHER])
   end      
   
   def new_teacher
@@ -10,7 +11,7 @@ class AdminController < ApplicationController
   end       
   
   def create_teacher
-    @teacher = User.new(params[:teacher].merge(:role => "teacher") )
+    @teacher = User.new(params[:teacher].merge(:role => Role::TEACHER) )
     success = @teacher && @teacher.save
     if success && @teacher.errors.empty?
       redirect_to :action => "index"

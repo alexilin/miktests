@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   include Authentication
   include Authentication::ByPassword
   include Authentication::ByCookieToken
+  
+  has_many :subjects, :foreign_key => "teacher_id", :dependent => :destroy
 
   validates_presence_of     :login
   validates_length_of       :login,    :within => 3..40
@@ -48,23 +50,34 @@ class User < ActiveRecord::Base
   end
 
   def admin?
-    is_in_role :admin
+    is_in_role? Role::ADMIN
   end       
   
   def teacher?          
-    is_in_role :teacher
+    is_in_role? Role::TEACHER
   end       
   
   def student?              
-    is_in_role? :student
+    is_in_role? Role::STUDENT
   end    
 
-  def is_in_role? role_name
-    self.role.to_s == role_name.to_s
+  def is_in_role? role_id
+    self.role == role_id
   end  
+
+  # def to_param
+  #   self.login
+  # end
   
   protected
+
     
 
 
+end
+
+class Role
+  STUDENT = 0
+  TEACHER = 1
+  ADMIN = 2  
 end

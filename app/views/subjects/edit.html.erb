@@ -1,12 +1,14 @@
 <h1>Editing subject</h1>
 
-<% form_for(@subject) do |f| %>
+<% form_for(@subject, :url => user_subject_path(current_user, @subject), :method => "put") do |f| %>
   <%= f.error_messages %>
+  
+  <p><%= label_tag 'title' %><br/>
+  <%= f.text_field :title %></p>
 
   <p>
     <%= f.submit 'Update' %>
   </p>
 <% end %>
 
-<%= link_to 'Show', @subject %> |
-<%= link_to 'Back', subjects_path %>
+<%= link_to 'Back', user_subjects_path %>
