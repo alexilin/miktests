@@ -1,6 +1,5 @@
 <p>
-  <%= f.label :answer, "Answer" %>
-  <%= f.text_field :answer %>
-  <%= f.check_box :_destroy %>
-  <%= f.label :_destroy, "Remove" %>
+  <%= f.text_field :answer %>     
+  <%= f.check_box :correct %>
+  <span style="margin-left:50px"><%= link_to_remove_fields "remove", f %></span>
 </p>

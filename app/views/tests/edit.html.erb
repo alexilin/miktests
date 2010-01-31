@@ -1,19 +1,7 @@
 <h1>Editing test</h1>
 
 <% form_for(@test, :url => user_subject_test_path(@teacher, @subject, @test), :method => "put") do |f| %>
-  <%= f.error_messages %>
-  
-  <p><%= label_tag 'test title' %><br/>
-    <%= f.text_field :title %>
-  </p>
-
-  <% f.fields_for :questions do |builder| %>
-    <%= render "question_fields", :f => builder %>
-  <% end %>
-      
-  <p>
-    <%= f.submit 'Save' %>
-  </p>
+  <%= render "form", :f => f %>      
 <% end %>
 
 <%= link_to 'Back', user_subject_tests_path %>
