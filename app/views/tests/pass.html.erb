@@ -1,0 +1,13 @@
+<h2><%= @test.title %></h2>
+
+<b><%= @qnumber + 1 %>. <%= @question.question %></b>
+
+<% form_tag(pass_user_subject_test_path(@teacher, @subject, @test, :q => @qnumber)) do %>
+<div class="question">                                                   
+  <% for a in @question.answers.all %>
+    <%= radio_button_tag "answer", a.id %><%= a.answer %> <br/>
+  <% end %>
+</div> 
+  <%= submit_tag "<< Previous"%>
+  <%= submit_tag "Next >>"%>
+<% end %>

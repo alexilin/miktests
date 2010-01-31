@@ -10,7 +10,10 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :users, :collection => { }, :member => { }, :path => "" do |teacher|
     teacher.resources :subjects do |subject|
-      subject.resources :tests
+      subject.resources :tests, :member => { 
+          :pass => :any,
+          :result => :any
+        } 
     end
   end      
   

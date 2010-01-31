@@ -3,12 +3,17 @@
 <table>
   <tr>
     <th>Title</th>
+    <th>Actions</th>
   </tr>
 
 <% @tests.each do |test| %>
   <tr>  
-    <td><%= link_to "#{test.title} (#{test.questions.count})", edit_user_subject_test_path(@teacher, @subject, test) %></td>
-    <td><%= link_to 'Destroy', user_subject_test_path(@teacher, @subject, test), :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to "#{test.title} (#{test.questions.count})", user_subject_test_path(@teacher, @subject, test) %></td>    
+    <td>
+      <%= link_to 'Destroy', user_subject_test_path(@teacher, @subject, test), :confirm => 'Are you sure?', :method => :delete %>
+      <%= link_to 'Edit', edit_user_subject_test_path(@teacher, @subject, test) %>      
+      <%= link_to 'Pass', pass_user_subject_test_path(@teacher, @subject, test) %>      
+    </td>
   </tr>
 <% end %>
 </table>

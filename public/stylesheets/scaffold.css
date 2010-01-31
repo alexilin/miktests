@@ -51,7 +51,8 @@ a:hover { color: #fff; background-color:#000; }
   font-size: 12px;
   list-style: square;
 }
-
+ 
+/* ----------------- */
 div#welcome {
 	font-size:130px;
 	padding-top:50px;
@@ -62,4 +63,8 @@ div#welcome_links {
 	font-size:20px;
 	padding:20px;
 	height:100px;
+}
+
+div.question {
+	margin:10px 10px;
 }
