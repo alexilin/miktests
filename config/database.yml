@@ -1,0 +1,29 @@
+development:
+  adapter: mysql
+  database: miktests_dev
+  pool: 5
+  reconnect: false  
+  encoding: utf8
+  username: root
+  password: password1
+  host: localhost
+    
+test:
+  adapter: mysql
+  database: miktests_test
+  pool: 5
+  reconnect: false  
+  encoding: utf8
+  username: root
+  password: password1
+  host: localhost
+
+production:
+  adapter: mysql
+  database: miktests
+  pool: 5
+  reconnect: false  
+  encoding: utf8
+  username: root
+  password: password1
+  host: localhost
