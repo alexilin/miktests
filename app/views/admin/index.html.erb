@@ -1,0 +1,21 @@
+<h1>All teachers</h1>
+
+<table>
+  <tr>
+    <th align="left" style="width:200px">Name</th>
+    <th align="left" style="width:200px">Login</th>
+    <th align="left" style="width:100px">Actions</th>
+  </tr>
+  <% @teachers.each do |teacher| %>
+  <tr>
+    <td><%= teacher.name%></td>
+    <td><%= teacher.login%></td>
+    <td><%= link_to 'Edit', :action => "edit_teacher", :id => teacher.id %>
+<%= link_to 'Destroy', {:action => "delete_teacher", :id => teacher.id}, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+  <% end %>
+</table>
+
+<br />
+
+<%= link_to 'New teacher', :action => "new_teacher" %>
