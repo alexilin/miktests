@@ -14674,3 +14674,202 @@ Processing TestsController#before_pass (for 127.0.0.1 at 2010-02-02 12:52:13) [P
 Rendering template within layouts/application
 Rendering tests/before_pass
 Completed in 37ms (View: 4, DB: 11) | 200 OK [http://localhost/users/2/subjects/1/tests/4/before_pass]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SubjectsController#index (for 127.0.0.1 at 2010-02-02 12:59:30) [GET]
+  Parameters: {"action"=>"index", "user_id"=>"2", "controller"=>"subjects"}
+  [4;36;1mUser Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2 AND (role = 1)) [0m
+  [4;36;1mSubject Load (0.3ms)[0m   [0;1mSELECT * FROM `subjects` WHERE (`subjects`.teacher_id = 2) [0m
+Rendering template within layouts/application
+Rendering subjects/index
+  [4;35;1mSubject Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `subjects`[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+Completed in 25ms (View: 9, DB: 5) | 200 OK [http://localhost/users/2/subjects]
+  [4;35;1mSQL (0.3ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TestsController#index (for 127.0.0.1 at 2010-02-02 12:59:32) [GET]
+  Parameters: {"action"=>"index", "subject_id"=>"1", "user_id"=>"2", "controller"=>"tests"}
+  [4;35;1mUser Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 2 AND (role = 1)) [0m
+  [4;35;1mSubject Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `subjects`[0m
+  [4;36;1mSubject Load (0.6ms)[0m   [0;1mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 1) [0m
+  [4;35;1mTest Load (0.3ms)[0m   [0mSELECT * FROM `tests` WHERE (`tests`.subject_id = 1) [0m
+Rendering template within layouts/application
+Rendering tests/index
+  [4;36;1mTest Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `tests`[0m
+  [4;35;1mQuestion Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `questions`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM `questions` WHERE (`questions`.test_id = 2) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(*) AS count_all FROM `questions` WHERE (`questions`.test_id = 4) [0m
+Completed in 107ms (View: 26, DB: 9) | 200 OK [http://localhost/users/2/subjects/1/tests]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TestsController#results (for 127.0.0.1 at 2010-02-02 12:59:34) [GET]
+  Parameters: {"action"=>"results", "subject_id"=>"1", "id"=>"2", "user_id"=>"2", "controller"=>"tests"}
+  [4;36;1mUser Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2 AND (role = 1)) [0m
+  [4;36;1mSubject Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `subjects`[0m
+  [4;35;1mSubject Load (0.5ms)[0m   [0mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 1) [0m
+  [4;36;1mTest Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `tests`[0m
+  [4;35;1mTest Load (0.3ms)[0m   [0mSELECT * FROM `tests` WHERE (`tests`.`id` = '2') AND (`tests`.subject_id = 1) LIMIT 1[0m
+  [4;36;1mSQL (18.9ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mTestResult Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `test_results`[0m
+
+NoMethodError (undefined method `all_by_test_id' for #<Class:0x2892aa4>):
+  app/controllers/tests_controller.rb:89:in `results'
+  thin (1.0.0) lib/thin/connection.rb:63:in `pre_process'
+  thin (1.0.0) lib/thin/connection.rb:54:in `process'
+  thin (1.0.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (0.12.6) lib/eventmachine.rb:240:in `run_machine'
+  eventmachine (0.12.6) lib/eventmachine.rb:240:in `run'
+  thin (1.0.0) lib/thin/backends/base.rb:57:in `start'
+  thin (1.0.0) lib/thin/server.rb:150:in `start'
+  thin (1.0.0) lib/thin/controllers/controller.rb:80:in `start'
+  thin (1.0.0) lib/thin/runner.rb:173:in `send'
+  thin (1.0.0) lib/thin/runner.rb:173:in `run_command'
+  thin (1.0.0) lib/thin/runner.rb:139:in `run!'
+  thin (1.0.0) bin/thin:6
+  /opt/local/bin/thin:19:in `load'
+  /opt/local/bin/thin:19
+
+Rendered rescues/_trace (28.6ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TestsController#results (for 127.0.0.1 at 2010-02-02 12:59:54) [GET]
+  Parameters: {"action"=>"results", "subject_id"=>"1", "id"=>"2", "user_id"=>"2", "controller"=>"tests"}
+  [4;36;1mUser Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2 AND (role = 1)) [0m
+  [4;36;1mSubject Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `subjects`[0m
+  [4;35;1mSubject Load (0.5ms)[0m   [0mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 1) [0m
+  [4;36;1mTest Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `tests`[0m
+  [4;35;1mTest Load (0.3ms)[0m   [0mSELECT * FROM `tests` WHERE (`tests`.`id` = '2') AND (`tests`.subject_id = 1) LIMIT 1[0m
+  [4;36;1mTestResult Load (0.2ms)[0m   [0;1mSELECT * FROM `test_results` WHERE (test_id = 2) [0m
+Rendering template within layouts/application
+Rendering tests/results
+  [4;35;1mTestResult Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `test_results`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 3) [0m
+Completed in 39ms (View: 10, DB: 9) | 200 OK [http://localhost/users/2/subjects/1/tests/2/results]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TestsController#results (for 127.0.0.1 at 2010-02-02 13:00:12) [GET]
+  Parameters: {"action"=>"results", "subject_id"=>"1", "id"=>"2", "user_id"=>"2", "controller"=>"tests"}
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 2 AND (role = 1)) [0m
+  [4;35;1mSubject Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `subjects`[0m
+  [4;36;1mSubject Load (0.3ms)[0m   [0;1mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 1) [0m
+  [4;35;1mTest Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `tests`[0m
+  [4;36;1mTest Load (0.3ms)[0m   [0;1mSELECT * FROM `tests` WHERE (`tests`.`id` = '2') AND (`tests`.subject_id = 1) LIMIT 1[0m
+  [4;35;1mTestResult Load (0.3ms)[0m   [0mSELECT * FROM `test_results` WHERE (test_id = 2) [0m
+Rendering template within layouts/application
+Rendering tests/results
+  [4;36;1mTestResult Columns (3.1ms)[0m   [0;1mSHOW FIELDS FROM `test_results`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 3) [0m
+Completed in 45ms (View: 11, DB: 10) | 200 OK [http://localhost/users/2/subjects/1/tests/2/results]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SubjectsController#dashboard (for 127.0.0.1 at 2010-02-02 13:00:20) [GET]
+  Parameters: {"action"=>"dashboard", "user_id"=>"2", "controller"=>"subjects"}
+  [4;36;1mUser Columns (2.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (2.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2 AND (role = 1)) [0m
+  [4;36;1mSubject Load (1.3ms)[0m   [0;1mSELECT * FROM `subjects` WHERE (`subjects`.teacher_id = 2) [0m
+Rendering template within layouts/application
+Rendering subjects/dashboard
+  [4;35;1mSubject Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `subjects`[0m
+Completed in 26ms (View: 6, DB: 8) | 200 OK [http://localhost/users/2/subjects/dashboard]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TestsController#dashboard (for 127.0.0.1 at 2010-02-02 13:00:21) [GET]
+  Parameters: {"action"=>"dashboard", "subject_id"=>"1", "user_id"=>"2", "controller"=>"tests"}
+  [4;36;1mUser Columns (2.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2 AND (role = 1)) [0m
+  [4;36;1mSubject Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `subjects`[0m
+  [4;35;1mSubject Load (0.4ms)[0m   [0mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 1) [0m
+  [4;36;1mTest Load (0.4ms)[0m   [0;1mSELECT * FROM `tests` WHERE (`tests`.subject_id = 1) [0m
+Rendering template within layouts/application
+Rendering tests/dashboard
+  [4;35;1mTest Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `tests`[0m
+  [4;36;1mQuestion Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM `questions` WHERE (`questions`.test_id = 2) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM `questions` WHERE (`questions`.test_id = 4) [0m
+Completed in 36ms (View: 11, DB: 9) | 200 OK [http://localhost/users/2/subjects/1/tests/dashboard]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TestsController#before_pass (for 127.0.0.1 at 2010-02-02 13:00:24) [GET]
+  Parameters: {"action"=>"before_pass", "subject_id"=>"1", "id"=>"4", "user_id"=>"2", "controller"=>"tests"}
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 2 AND (role = 1)) [0m
+  [4;35;1mSubject Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `subjects`[0m
+  [4;36;1mSubject Load (0.3ms)[0m   [0;1mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 1) [0m
+  [4;35;1mTest Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `tests`[0m
+  [4;36;1mTest Load (0.3ms)[0m   [0;1mSELECT * FROM `tests` WHERE (`tests`.`id` = '4') AND (`tests`.subject_id = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering tests/before_pass
+Completed in 28ms (View: 4, DB: 6) | 200 OK [http://localhost/users/2/subjects/1/tests/4/before_pass]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TestsController#results (for 127.0.0.1 at 2010-02-02 13:00:38) [GET]
+  Parameters: {"action"=>"results", "subject_id"=>"1", "id"=>"2", "user_id"=>"2", "controller"=>"tests"}
+  [4;35;1mUser Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 2 AND (role = 1)) [0m
+  [4;35;1mSubject Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `subjects`[0m
+  [4;36;1mSubject Load (0.4ms)[0m   [0;1mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 1) [0m
+  [4;35;1mTest Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `tests`[0m
+  [4;36;1mTest Load (0.3ms)[0m   [0;1mSELECT * FROM `tests` WHERE (`tests`.`id` = '2') AND (`tests`.subject_id = 1) LIMIT 1[0m
+  [4;35;1mTestResult Load (0.2ms)[0m   [0mSELECT * FROM `test_results` WHERE (test_id = 2) [0m
+Rendering template within layouts/application
+Rendering tests/results
+  [4;36;1mTestResult Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `test_results`[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 3) [0m
+Completed in 42ms (View: 10, DB: 9) | 200 OK [http://localhost/users/2/subjects/1/tests/2/results]
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SubjectsController#index (for 127.0.0.1 at 2010-02-02 13:00:39) [GET]
+  Parameters: {"action"=>"index", "user_id"=>"2", "controller"=>"subjects"}
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 2 AND (role = 1)) [0m
+  [4;36;1mSubject Load (0.3ms)[0m   [0;1mSELECT * FROM `subjects` WHERE (`subjects`.teacher_id = 2) [0m
+Rendering template within layouts/application
+Rendering subjects/index
+  [4;35;1mSubject Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `subjects`[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 2) LIMIT 1[0m
+Completed in 25ms (View: 9, DB: 5) | 200 OK [http://localhost/users/2/subjects]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TestsController#index (for 127.0.0.1 at 2010-02-02 13:00:41) [GET]
+  Parameters: {"action"=>"index", "subject_id"=>"1", "user_id"=>"2", "controller"=>"tests"}
+  [4;35;1mUser Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 2 AND (role = 1)) [0m
+  [4;35;1mSubject Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `subjects`[0m
+  [4;36;1mSubject Load (0.4ms)[0m   [0;1mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 1) [0m
+  [4;35;1mTest Load (0.3ms)[0m   [0mSELECT * FROM `tests` WHERE (`tests`.subject_id = 1) [0m
+Rendering template within layouts/application
+Rendering tests/index
+  [4;36;1mTest Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `tests`[0m
+  [4;35;1mQuestion Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `questions`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(*) AS count_all FROM `questions` WHERE (`questions`.test_id = 2) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(*) AS count_all FROM `questions` WHERE (`questions`.test_id = 4) [0m
+Completed in 44ms (View: 18, DB: 8) | 200 OK [http://localhost/users/2/subjects/1/tests]

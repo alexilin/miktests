@@ -1,0 +1,20 @@
+<h2><%= @test.title %> results</h2>
+
+<table class="test_results">
+  <tr>  
+    <th>Student Name</th>
+    <th>Correct / Incorrect</th>
+    <th>Percent</th>
+  </tr>   
+  <% for result in @results%>
+    <tr>
+      <td><%= result.user.name %></td>
+      <td><%= result.correct_count %> / <%= result.incorrect_count %></td>
+      <td><%= result.percent %>%</td>
+    </td>
+  <% end %>
+</table>
+
+<br/>
+<br/>
+<%= link_to 'Go Home', user_subjects_path(@teacher)%>

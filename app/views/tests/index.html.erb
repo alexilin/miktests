@@ -13,6 +13,7 @@
       <%= link_to 'Destroy', user_subject_test_path(@teacher, @subject, test), :confirm => 'Are you sure?', :method => :delete %>
       <%= link_to 'Edit', edit_user_subject_test_path(@teacher, @subject, test) %>      
       <%= link_to 'Pass', pass_user_subject_test_path(@teacher, @subject, test) %>      
+      <%= link_to 'View results', results_user_subject_test_path(@teacher, @subject, test) %>      
     </td>
   </tr>
 <% end %>

@@ -84,6 +84,11 @@ class TestsController < ApplicationController
     @result = TestResult.find_by_user_id_and_test_id(current_user.id, @test.id)
   end
 
+  def results
+    @test = @subject.tests.find_by_id(params[:id])        
+    @results = TestResult.all(:conditions => ["test_id = ?",@test.id])
+  end
+
   # GET /tests/new
   # GET /tests/new.xml
   def new

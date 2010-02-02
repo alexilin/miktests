@@ -68,3 +68,8 @@ div#welcome_links {
 div.question {
 	margin:10px 10px;
 }
+
+table.test_results th {
+	text-align:left;
+	width:200px;
+}

@@ -1,4 +1,6 @@
 class TestResult < ActiveRecord::Base
+  belongs_to :user
+  
   def self.get_correct_count user, test
     UserAnswer.count(:conditions => ["user_id = ? and test_id = ? and correct = ?", user.id, test.id, true])    
   end

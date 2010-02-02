@@ -17,7 +17,8 @@ ActionController::Routing::Routes.draw do |map|
        :member => { 
           :before_pass => :any,                                           
           :pass => :any,
-          :result => :any
+          :result => :any,
+          :results => :any
         } 
     end
   end      
