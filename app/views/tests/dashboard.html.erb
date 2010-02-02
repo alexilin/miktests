@@ -1,0 +1,9 @@
+<h1><%= @teacher.name %>'s <%= @subject.title %> tests</h1>
+
+<ul>
+<% @tests.each do |test| %>
+  <li>  
+    <%= link_to "#{test.title} (#{test.questions.count})", before_pass_user_subject_test_path(@teacher, @subject, test) %>
+  </li>
+<% end %>
+</ul>

@@ -1,8 +1,17 @@
 <%= f.error_messages %>
 
-<p><%= label_tag 'test title' %><br/>
+<p><%= label_tag 'Test Title' %><br/>
   <%= f.text_field :title %>
+</p>               
+
+<p><%= label_tag 'Access Password' %><br/>
+<%= f.password_field :password %></p>
+
+<p>
+  <%= f.submit 'Save' %>
 </p>
+
+<hr/>
 
 <% f.fields_for :questions do |builder| %>
   <%= render "question_fields", :f => builder %>

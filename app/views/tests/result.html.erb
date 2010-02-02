@@ -2,5 +2,8 @@ Test completed, results: <br/>
 Correct answers: <%= @result.correct_count %> <br/>
 Incorrect answers: <%= @result.incorrect_count %> <br/>
 Percent: <%= @result.percent %>%                       
-
+                                                  
+<br/>
+<br/>
 <%= link_to 'Try again', pass_user_subject_test_path(@teacher, @subject, @test)%>
+<%= link_to 'Go Home', dashboard_user_subjects_path(@teacher)%>

@@ -40,6 +40,15 @@ class User < ActiveRecord::Base
     u = find_by_login(login.downcase) # need to get the salt
     u && u.authenticated?(password) ? u : nil
   end
+  
+  def self.find_or_create name
+    User.find_by_name(name) || create_student_user(name)    
+  end                                  
+  
+  def self.create_student_user name
+    User.create(:login => Digest::SHA1.hexdigest(name), :name => name, :role => Role::STUDENT,
+      :email => "fake@email.com", :password => "fake_password", :password_confirmation => "fake_password")    
+  end
 
   def login=(value)
     write_attribute :login, (value ? value.downcase : nil)
@@ -70,10 +79,6 @@ class User < ActiveRecord::Base
   # end
   
   protected
-
-    
-
-
 end
 
 class Role

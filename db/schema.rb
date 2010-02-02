@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100131205105) do
+ActiveRecord::Schema.define(:version => 20100202083053) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -42,13 +42,13 @@ ActiveRecord::Schema.define(:version => 20100131205105) do
     t.datetime "updated_at"
   end
 
-  add_index "test_results", ["user_id", "test_id"], :name => "index_test_results_on_user_id_and_test_id", :unique => true
-
   create_table "tests", :force => true do |t|
     t.integer  "subject_id"
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "crypted_password", :limit => 40
+    t.string   "salt",             :limit => 40
   end
 
   create_table "user_answers", :force => true do |t|

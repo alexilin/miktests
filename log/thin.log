@@ -26,3 +26,84 @@
 >> Thin web server (v1.0.0 codename That's What She Said)
 >> Maximum connections set to 1024
 >> Listening on 0.0.0.0:3000, CTRL+C to stop
+>> Exiting!
+>> Writing PID to tmp/pids/thin.pid
+>> Using rails adapter
+Missing these required gems:
+  mysql  
+  ar-extensions  
+
+You're running:
+  ruby 1.9.1.376 at /Users/ai/.rvm/ruby-1.9.1-p376/bin/ruby
+  rubygems 1.3.5 at /Users/ai/.rvm/gems/ruby/1.9.1
+
+Run `rake gems:install` to install the missing gems.
+>> Exiting!
+>> Writing PID to tmp/pids/thin.pid
+>> Using rails adapter
+>> Thin web server (v1.0.0 codename That's What She Said)
+>> Maximum connections set to 1024
+>> Listening on 0.0.0.0:3000, CTRL+C to stop
+!! Unexpected error while processing request: /Users/ai/work/miktests/config/routes.rb:16: syntax error, unexpected tASSOC, expecting kEND
+        :member => { 
+                  ^
+!! Unexpected error while processing request: /Users/ai/work/miktests/config/routes.rb:16: syntax error, unexpected tASSOC, expecting kEND
+        :member => { 
+                  ^
+!! Unexpected error while processing request: /Users/ai/work/miktests/config/routes.rb:15: syntax error, unexpected tASSOC, expecting kEND
+       :member => { 
+                 ^
+!! Unexpected error while processing request: /Users/ai/work/miktests/config/routes.rb:17: syntax error, unexpected tASSOC, expecting kEND
+       :member => { 
+                 ^
+>> Waiting for 1 connection(s) to finish, can take up to 30 sec, CTRL+C to stop now
+>> Writing PID to tmp/pids/thin.pid
+>> Using rails adapter
+>> Exiting!
+/opt/local/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:145:in `load_without_new_constant_marking': /Users/ai/work/miktests/config/routes.rb:17: syntax error, unexpected tASSOC, expecting kEND (SyntaxError)
+       :member => { 
+                 ^
+	from /opt/local/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:145:in `load'
+	from /opt/local/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:521:in `new_constants_in'
+	from /opt/local/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:145:in `load'
+	from /opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/routing/route_set.rb:286:in `load_routes!'
+	from /opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/routing/route_set.rb:286:in `each'
+	from /opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/routing/route_set.rb:286:in `load_routes!'
+	from /opt/local/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/routing/route_set.rb:266:in `reload!'
+	from /opt/local/lib/ruby/gems/1.8/gems/rails-2.3.5/lib/initializer.rb:537:in `initialize_routing'
+	from /opt/local/lib/ruby/gems/1.8/gems/rails-2.3.5/lib/initializer.rb:188:in `process'
+	from /opt/local/lib/ruby/gems/1.8/gems/rails-2.3.5/lib/initializer.rb:113:in `send'
+	from /opt/local/lib/ruby/gems/1.8/gems/rails-2.3.5/lib/initializer.rb:113:in `run'
+	from /Users/ai/work/miktests/config/environment.rb:9
+	from /opt/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+	from /opt/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+	from /opt/local/lib/ruby/gems/1.8/gems/thin-1.0.0/lib/rack/adapter/rails.rb:31:in `load_application'
+	from /opt/local/lib/ruby/gems/1.8/gems/thin-1.0.0/lib/rack/adapter/rails.rb:23:in `initialize'
+	from /opt/local/lib/ruby/gems/1.8/gems/thin-1.0.0/lib/rack/adapter/loader.rb:36:in `new'
+	from /opt/local/lib/ruby/gems/1.8/gems/thin-1.0.0/lib/rack/adapter/loader.rb:36:in `for'
+	from /opt/local/lib/ruby/gems/1.8/gems/thin-1.0.0/lib/thin/controllers/controller.rb:163:in `load_adapter'
+	from /opt/local/lib/ruby/gems/1.8/gems/thin-1.0.0/lib/thin/controllers/controller.rb:67:in `start'
+	from /opt/local/lib/ruby/gems/1.8/gems/thin-1.0.0/lib/thin/runner.rb:173:in `send'
+	from /opt/local/lib/ruby/gems/1.8/gems/thin-1.0.0/lib/thin/runner.rb:173:in `run_command'
+	from /opt/local/lib/ruby/gems/1.8/gems/thin-1.0.0/lib/thin/runner.rb:139:in `run!'
+	from /opt/local/lib/ruby/gems/1.8/gems/thin-1.0.0/bin/thin:6
+	from /opt/local/bin/thin:19:in `load'
+	from /opt/local/bin/thin:19
+>> Exiting!
+>> Writing PID to tmp/pids/thin.pid
+>> Using rails adapter
+>> Thin web server (v1.0.0 codename That's What She Said)
+>> Maximum connections set to 1024
+>> Listening on 0.0.0.0:3000, CTRL+C to stop
+>> Exiting!
+>> Writing PID to tmp/pids/thin.pid
+>> Using rails adapter
+>> Thin web server (v1.0.0 codename That's What She Said)
+>> Maximum connections set to 1024
+>> Listening on 0.0.0.0:3000, CTRL+C to stop
+>> Exiting!
+>> Writing PID to tmp/pids/thin.pid
+>> Using rails adapter
+>> Thin web server (v1.0.0 codename That's What She Said)
+>> Maximum connections set to 1024
+>> Listening on 0.0.0.0:3000, CTRL+C to stop
