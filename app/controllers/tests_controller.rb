@@ -27,11 +27,13 @@ class TestsController < ApplicationController
     @test = @subject.tests.find_by_id(params[:id])        
     if request.post?
       @student_name = params[:test][:student_name]
-      if @test.authenticate(params[:test][:test_password])
+      if @test.authenticate(params[:test][:test_password]) && !@student_name.blank?
         session["test#{@test.id}"] = @test.crypted_password        
         student = User.find_or_create @student_name        
         self.current_user = student
         redirect_to :action => 'pass'
+      else
+        flash[:notice] = "Please enter your name and correct test access password"
       end      
     end
   end
