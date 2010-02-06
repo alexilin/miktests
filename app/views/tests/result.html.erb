@@ -1,9 +1,20 @@
-Test completed, results: <br/>
-Correct answers: <%= @result.correct_count %> <br/>
-Incorrect answers: <%= @result.incorrect_count %> <br/>
-Percent: <%= @result.percent %>%                       
-                                                  
-<br/>
-<br/>
-<%= link_to 'Try again', pass_user_subject_test_path(@teacher, @subject, @test)%>
-<%= link_to 'Go Home', dashboard_user_subjects_path(@teacher)%>
+<% content_for :header do %>
+<%= link_to @teacher.name, dashboard_user_subjects_path(@teacher) %> → 
+<%= link_to @subject.title, dashboard_user_subject_tests_path(@teacher, @subject) %> →
+<%= link_to @test.title, before_pass_user_subject_test_path(@teacher, @subject, @test) %> →
+Your result
+<% end %>
+
+<div class="leftColumn" style="width:900px !important">
+  <h2>Test completed. Your result - <%= @result.percent %>%</h2>
+  
+  <div class="links">
+    <%= link_to '<span>try again →</span>', pass_user_subject_test_path(@teacher, @subject, @test)%>  
+  </div>
+</div>
+
+
+
+
+  
+

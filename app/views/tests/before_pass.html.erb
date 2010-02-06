@@ -1,12 +1,30 @@
-<h1>Passing a test</h1>
+<% content_for :header do %>
+<%= link_to @teacher.name, dashboard_user_subjects_path(@teacher) %> → 
+<%= link_to @subject.title, dashboard_user_subject_tests_path(@teacher, @subject) %> →
+<%= link_to @test.title, before_pass_user_subject_test_path(@teacher, @subject, @test) %>
+<% end %>
 
-<%= error_messages_for :user %>
-<% form_tag before_pass_user_subject_test_path(@teacher, @subject, @test) do -%>
-<p><%= label_tag 'Your name' %><br/>
-<%= text_field_tag 'test[student_name]', @student_name %></p>
+<div class="leftColumn">
+  <h2>Enter your information →</h2>
+  
+  <div class="messages">
+    <p class="error"><%= flash[:notice] %></p>
+  </div>  
+</div>
 
-<p><%= label_tag 'Your test access password' %><br/>
-<%= password_field_tag 'test[test_password]' %></p>
+<div class="rightColumn">
+  <div class="form">          
+    <% form_tag before_pass_user_subject_test_path(@teacher, @subject, @test) do -%>
+    <p><%= label_tag 'Your name' %><br/>
+    <%= text_field_tag 'test[student_name]', @student_name %></p>
 
-<p><%= submit_tag 'Ok' %></p>
-<% end -%>
+    <p><%= label_tag 'Class name' %><br/>
+    <%= text_field_tag 'test[class_name]', "" %></p>
+
+    <p><%= label_tag 'Your test access password' %><br/>
+    <%= password_field_tag 'test[test_password]' %></p>
+
+    <p class="submit"><%= submit_tag 'start test →' %></p>
+    <% end -%>
+  </div>
+</div>

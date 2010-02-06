@@ -1,13 +1,30 @@
-<h2><%= @test.title %></h2>
-
-<b><%= @qnumber + 1 %>. <%= @question.question %></b>
-
-<% form_tag(pass_user_subject_test_path(@teacher, @subject, @test, :q => @qnumber)) do %>
-<div class="question">                                                   
-  <% for a in @question.answers.all %>
-    <%= radio_button_tag "answer", a.id %><%= a.answer %> <br/>
-  <% end %>
-</div> 
-  <%= submit_tag "<< Previous"%>
-  <%= submit_tag "Next >>"%>
+<% content_for :header do %>
+<%= link_to @teacher.name, dashboard_user_subjects_path(@teacher) %> → 
+<%= link_to @subject.title, dashboard_user_subject_tests_path(@teacher, @subject) %> →
+<%= link_to @test.title, before_pass_user_subject_test_path(@teacher, @subject, @test) %>
 <% end %>
+
+<div class="leftColumn">
+  <!-- <h2>Question <%= @qnumber + 1 %></h2> -->
+
+  <div class="question">
+    <%= @qnumber + 1 %>. <%= @question.question %>      
+  </div>
+</div>
+       
+<div class="rightColumn">
+  <div class="answers-form">          
+    <% form_tag(pass_user_subject_test_path(@teacher, @subject, @test, :q => @qnumber)) do %>
+      <% for a in @question.answers.all %>
+        <div class="answer">
+          <%= radio_button_tag "answer", a.id %> <span><%= a.answer %></span> <br/>
+        </div>
+      <% end %>
+
+      <p class="submit">
+        <%= submit_tag "← prev"%>
+        <%= submit_tag "next →"%>
+      </p>
+    <% end %>
+  </div>
+</div>

@@ -1,16 +1,24 @@
-<h1>Log In</h1>
+<div class="leftColumn">
+  <h2>Please sign in →</h2>
+  
+  <div class="messages">
+    <p class="error"><%= flash[:error] %></p>
+  </div>  
+</div>
 
-<% form_tag session_path do -%>
-<p><%= label_tag 'login' %><br />
-<%= text_field_tag 'login', @login %></p>
+<div class="rightColumn">
+  <div class="form">          
+    <% form_tag session_path do -%>
+    <p><%= label_tag 'user name' %><br />
+    <%= text_field_tag 'login', @login %></p>
 
-<p><%= label_tag 'password' %><br/>
-<%= password_field_tag 'password', nil %></p>
-
-<!-- Uncomment this if you want this functionality
-<p><%= label_tag 'remember_me', 'Remember me' %>
-<%= check_box_tag 'remember_me', '1', @remember_me %></p>
--->
-
-<p><%= submit_tag 'Log in' %></p>
-<% end -%>
+    <p><%= label_tag 'password' %><br/>
+    <%= password_field_tag 'password', nil %></p>
+    
+    <!-- <p><%= label_tag 'remember_me', 'Remember me' %>
+      <%= check_box_tag 'remember_me', '1', @remember_me %></p> -->
+       
+    <p class="submit"><%= submit_tag 'sign in →' %></p>
+    <% end -%>
+  </div>
+</div>

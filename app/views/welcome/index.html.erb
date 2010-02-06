@@ -1,9 +1,11 @@
-<div id="welcome">Welcome</div>
-<div id="welcome_links">
-  <%= link_to "teacher's login", login_path %>
-</div>                                        
-   
-<h2>Active teachers:</h2>
-<% for t in @teachers %>
-<div><%= link_to t.name, dashboard_user_subjects_path(t) %></div>
-<% end %>
+<div class="leftColumn">
+  <h2>Select your teacher →</h2>
+</div>
+
+<div class="rightColumn">
+  <ul id="list">
+    <% for t in @teachers %>                                
+    <li><%= link_to t.name, dashboard_user_subjects_path(t) %></li>
+    <% end %> 
+  </ul>
+</div>

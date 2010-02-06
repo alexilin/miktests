@@ -1,9 +1,21 @@
-<h1><%= @teacher.name %>'s <%= @subject.title %> tests</h1>
-
-<ul>
-<% @tests.each do |test| %>
-  <li>  
-    <%= link_to "#{test.title} (#{test.questions.count})", before_pass_user_subject_test_path(@teacher, @subject, test) %>
-  </li>
+<% content_for :header do %>
+<%= link_to @teacher.name, dashboard_user_subjects_path(@teacher) %> → 
+<%= link_to @subject.title, dashboard_user_subject_tests_path(@teacher, @subject) %>
 <% end %>
-</ul>
+
+<div class="leftColumn">
+  <h2>Select a test →</h2>
+</div>
+
+<div class="rightColumn">
+  <ul id="list">
+    <% for test in @tests %>
+    <li><%= link_to test.title, before_pass_user_subject_test_path(@teacher, @subject, test) %></li>
+    <% end %>
+  </ul>                                                                                        
+  <% if @tests.empty? %>
+    <div class="message">
+      no tests yet :-(
+    </div>
+  <% end %>    
+</div>

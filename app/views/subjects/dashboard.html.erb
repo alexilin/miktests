@@ -1,7 +1,20 @@
-<h1><%= @teacher.name %>'s subjects</h1>
+<% content_for :header do %>
+<%= link_to @teacher.name, dashboard_user_subjects_path(@teacher) %>
+<% end %>
 
-<ul>
-  <% @subjects.each do |subject| %>
-  <li><%= link_to subject.title, dashboard_user_subject_tests_path(@teacher, subject) %></li>
-  <% end %>
-</ul>
+<div class="leftColumn">
+  <h2>Select a subject →</h2>
+</div>
+
+<div class="rightColumn">
+  <ul id="list">
+    <% @subjects.each do |subject| %>
+    <li><%= link_to subject.title, dashboard_user_subject_tests_path(@teacher, subject) %></li>
+    <% end %>   
+  </ul>
+  <% if @subjects.empty? %>
+    <div class="message">
+      no subjects yet :-(
+    </div>
+  <% end %>  
+</div>

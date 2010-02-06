@@ -1,0 +1,292 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+	border:0 none;
+	margin:0;
+	outline-style:none;
+	outline-width:0;
+	padding:0;
+	vertical-align:baseline;    
+}
+
+html, div, map, dt, isindex, form {
+	display:block;
+}
+
+body {
+	color:#FFFDD8;
+	font-family: Georgia,"Times New Roman",serif;
+	font-size:100%;
+	line-height:1.125em;
+	padding-bottom:50px;
+	background:#617A77 none repeat scroll 0 0;
+}
+
+.content, .header.page, .content-main, .footer.page, .aside.page {
+	position:relative;
+}
+
+.content {
+	margin:0 auto;
+	width:980px;
+}
+
+.header.page {
+	padding-top:35px;
+} 
+
+.branding {
+	background:#FFFDD8 none repeat scroll 0 0;
+	float:left;
+	height:115px;
+	position:relative;
+	width:305px;     
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+}
+
+.branding #logo {
+	color:#617A77;
+	display:block;
+	font-size:250%;
+	font-weight:bold;
+	padding-left:10px;
+	padding-top:60px;
+	position:relative;
+	text-decoration:none;
+	width:330px;
+}
+
+.main-nav {
+	float:right;
+	max-width:670px;
+	margin-right:90px;
+	font-family:Helvetica,arial,sans-serif;
+	font-size:1.125em;
+}
+
+.main-nav ol, .main-nav ul {
+	list-style-image:none;
+	list-style-position:outside;
+	list-style-type:none;
+}
+
+.main-nav ul li {
+	float:left;
+}
+
+.main-nav ul li a {
+	display:block;
+	float:left;
+	margin-left:4px;
+	padding-top:65px;
+	text-decoration:none;
+}
+               
+.main-nav ul li a:hover span {
+background-color:#FFFDD8;
+color:#617A77;
+-moz-border-radius:5px;
+-webkit-border-radius:5px;
+border-radius:5px;
+}
+        
+.main-nav li a span {
+	padding:6px 10px 5px;
+}
+
+a, a:link, a:visited {
+	color:#FFFDD8;      
+	text-decoration:underline;
+}
+
+.clear {clear:both;}
+
+.content-main {
+	padding-top:35px;
+}
+
+.ripTop {
+ 	border-top:4px dashed #FFFDD8;
+	height:10px;
+	margin:0 70px;
+	width:90%;
+}
+
+.ripContentWrapper {
+	width:100%;         	
+}
+
+.ripContent { 
+	margin:0 auto;
+	padding:10px 0;
+	width:980px;
+}
+
+.ripHeader {
+	margin:0 auto;
+	padding:10px 0;
+	width:980px;
+	height:20px;          
+	font-size:145%;
+}
+
+.ripHeader a {
+	text-decoration:none;	
+}  
+
+.leftColumn {
+/*	border-right:4px dashed #FFFDD8;*/
+	float:left;
+	padding:0;
+	width:500px;
+	height:200px;
+}
+
+.leftColumn h2 {
+	clear:both;
+	margin:0 0 3px;
+	padding-top:50px;
+	font-weight:normal;
+	font-size:250%;
+}
+
+.leftColumn .messages {
+	margin-top:20px;
+}
+
+.leftColumn .messages .error {
+	color:#FC7009;	
+}
+  
+.rightColumn {
+  border-left:4px dashed #FFFDD8; 
+	float:left;
+	padding-bottom:15px;
+	padding-left:10px;  
+	width:450px;
+}  
+
+.rightColumn ul#list {
+/*	border-bottom:4px dashed #FFFDD8;*/
+	list-style-type:none;
+	float:left;              
+	padding:40px 20px 36px 0px;
+}
+
+.rightColumn ul#list li {	
+	font-size:150%;
+	margin:0 0 10px;
+}
+
+.rightColumn ul#list li a {
+	float:left;
+	padding:10px 0 10px 34px;
+	text-decoration:none;                                                    
+}
+
+.rightColumn ul#list li a:hover {
+	background:transparent url(/images/star.png) no-repeat scroll left center;
+}       
+
+.rightColumn .form {
+	float:left;              
+	padding:40px 10px 36px 37px; 
+}
+                          
+.rightColumn .form label {
+	font-size:120%;
+}
+
+.rightColumn .form input {
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+	
+	border:2px solid white;
+	float:left;
+	font-size:100%;
+	height:20px;
+	margin-bottom:18px;
+	margin-top:5px;
+	padding:3px;
+	width:260px;
+}
+
+.rightColumn .form .submit input {
+	background:#FFFDD8 none repeat scroll 0 0;
+	border:2px solid #FFFDD8;
+	color:#617A77;
+	float:left;
+	font-size:150%;
+	height:50px;
+	margin-bottom:18px;
+	margin-top:24px;
+	width:180px; 
+}
+
+.rightColumn .answers-form {
+	float:left;              
+	padding:35px 10px 36px 37px;           
+}
+                          
+.rightColumn .answers-form input {
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+	
+	border:2px solid white;
+	float:left;
+	font-size:100%;
+	height:auto;
+	padding:3px;
+	margin:0px 10px;
+	width:auto;
+}
+
+.rightColumn .answers-form .submit input {
+	background:#FFFDD8 none repeat scroll 0 0;
+	border:2px solid #FFFDD8;
+	color:#617A77;
+	float:left;
+	font-size:150%;
+	height:40px;
+	margin-bottom:18px;
+	margin-top:24px;
+	width:120px; 
+	margin-right:10px;
+} 
+
+.rightColumn .answers-form div.answer {
+ 	padding:5px 0px; 
+	font-size:110%;
+}
+
+.leftColumn .question {
+	margin-top:65px;
+	font-size:120%;
+}    
+
+.leftColumn .links {
+	margin-top:50px;	
+}
+
+.leftColumn .links a {  
+	display:block;
+	margin-left:4px;
+	text-decoration:none; 
+	font-size:150%; 
+}
+
+.leftColumn .links a span {
+ 	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+ 	background-color:#FFFDD8;
+	color:#617A77;
+	padding:9px;
+}
+
+.rightColumn .message {
+	padding-top:54px;
+	margin-bottom:30px;
+}

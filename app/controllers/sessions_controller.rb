@@ -2,6 +2,8 @@
 class SessionsController < ApplicationController
   # render new.rhtml
   def new
+    flash[:error] = ""
+    flash[:notice] = ""
   end
 
   def create
@@ -16,8 +18,6 @@ class SessionsController < ApplicationController
       new_cookie_flag = (params[:remember_me] == "1")
       handle_remember_cookie! new_cookie_flag
       redirect_to user_subjects_path(user)
-      # redirect_back_or_default('/')
-      # flash[:notice] = "Logged in successfully"
     else
       note_failed_signin
       @login       = params[:login]
@@ -35,7 +35,6 @@ class SessionsController < ApplicationController
 protected
   # Track failed login attempts
   def note_failed_signin
-    flash[:error] = "Couldn't log you in as '#{params[:login]}'"
-    logger.warn "Failed login for '#{params[:login]}' from #{request.remote_ip} at #{Time.now.utc}"
+    flash[:error] = "Invalid user name or password"
   end
 end
