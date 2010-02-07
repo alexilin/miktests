@@ -17,7 +17,14 @@ class SessionsController < ApplicationController
       self.current_user = user
       new_cookie_flag = (params[:remember_me] == "1")
       handle_remember_cookie! new_cookie_flag
-      redirect_to user_subjects_path(user)
+      
+      if self.current_user.teacher?
+        redirect_to user_subjects_path(user)
+      elsif self.current_user.admin?        
+        redirect_to :controller => "admin"
+      else
+        redirect_to welcome_path
+      end    
     else
       note_failed_signin
       @login       = params[:login]

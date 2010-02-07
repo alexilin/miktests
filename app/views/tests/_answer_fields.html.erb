@@ -1,5 +1,5 @@
-<p>
+<p class="fields edit-question">    
+  <%= f.check_box :correct, :class => "correct_answer" %>
   <%= f.text_field :answer %>     
-  <%= f.check_box :correct %>
-  <span style="margin-left:50px"><%= link_to_remove_fields "remove", f %></span>
+  <span class="actions" style="margin-left:10px"><%= link_to_remove_fields "-", f %></span>
 </p>

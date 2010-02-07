@@ -1,24 +1,26 @@
-<%= f.error_messages %>
+<div class="leftColumn" style="width:600px !important">
+  <div class="form">          
+    <% f.fields_for :questions do |builder| %>
+      <%= render "question_fields", :f => builder %>
+    <% end %>
 
-<p><%= label_tag 'Test Title' %><br/>
-  <%= f.text_field :title %>
-</p>               
+    <p class="actions"><%= link_to_add_fields "add question", f, :questions %></p>
 
-<p><%= label_tag 'Access Password' %><br/>
-<%= f.password_field :password %></p>
+    <p class="submit"><%= f.submit 'save →' %></p>    
+  </div>                        
+</div>
 
-<p>
-  <%= f.submit 'Save' %>
-</p>
+<div class="rightColumn" style="width:300px !important">
+    <div class="form">          
+      <p><%= label_tag 'Test Title' %><br/>
+        <%= f.text_field :title %>
+      </p>               
 
-<hr/>
+      <p><%= label_tag 'Access Password' %><br/>
+        <%= f.password_field :password %></p>
 
-<% f.fields_for :questions do |builder| %>
-  <%= render "question_fields", :f => builder %>
-<% end %>
+      <p class="submit"><%= f.submit 'save →' %></p>    
+    </div>
+</div>
 
-<p><%= link_to_add_fields "Add Question", f, :questions %></p>
-    
-<p>
-  <%= f.submit 'Save' %>
-</p>
+

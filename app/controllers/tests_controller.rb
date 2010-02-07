@@ -5,11 +5,11 @@ require 'ar-extensions/import/mysql'
 class TestsController < ApplicationController
 
   before_filter :load_teacher, :load_subject
+  before_filter :only_for_owners, :except => [:dashboard, :before_pass, :pass, :result]
 
   def dashboard
     @tests = @subject.tests.all
   end
-
 
   # GET /tests
   # GET /tests.xml
@@ -17,23 +17,25 @@ class TestsController < ApplicationController
     @tests = @subject.tests.all
   end
 
-  # GET /tests/1
-  # GET /tests/1.xml
-  def show
-    @test = @subject.tests.find_by_id(params[:id])        
-  end                                           
+  # # GET /tests/1
+  # # GET /tests/1.xml
+  # def show
+  #   @test = @subject.tests.find_by_id(params[:id])        
+  # end                                           
 
   def before_pass                                         
     @test = @subject.tests.find_by_id(params[:id])        
     if request.post?
       @student_name = params[:test][:student_name]
-      if @test.authenticate(params[:test][:test_password]) && !@student_name.blank?
+      @student_class = params[:test][:student_class]      
+      if @test.authenticate(params[:test][:test_password]) && !@student_name.blank? && !@student_class.blank?
         session["test#{@test.id}"] = @test.crypted_password        
+        session[:student_class] = @student_class
         student = User.find_or_create @student_name        
         self.current_user = student
         redirect_to :action => 'pass'
       else
-        flash[:notice] = "Please enter your name and correct test access password"
+        flash[:notice] = "Please enter your name, class and test access password"
       end      
     end
   end
@@ -41,8 +43,8 @@ class TestsController < ApplicationController
   USER_ANSWER_COLUMNS = [:user_id, :test_id, :question_id, :answer_id, :correct, :created_at, :updated_at]
   UPDATE_USER_ANSWER_COLUMNS = [:answer_id, :correct, :updated_at]
 
-  TEST_RESULT_COLUMNS = [:user_id, :test_id, :correct_count, :incorrect_count, :created_at, :updated_at]
-  UPDATE_TEST_RESULT_COLUMNS = [:correct_count, :incorrect_count, :updated_at]
+  TEST_RESULT_COLUMNS = [:user_id, :test_id, :student_class, :correct_count, :incorrect_count, :created_at, :updated_at]
+  UPDATE_TEST_RESULT_COLUMNS = [:student_class, :correct_count, :incorrect_count, :updated_at]
 
   def pass        
     @test = @subject.tests.find_by_id(params[:id])        
@@ -67,7 +69,7 @@ class TestsController < ApplicationController
           incorrect_count = TestResult.get_incorrect_count(current_user, @test)
 
           TestResult.import(TEST_RESULT_COLUMNS, 
-          [[current_user.id, @test.id, correct_count, incorrect_count, Time.now, Time.now]], 
+          [[current_user.id, @test.id, session[:student_class], correct_count, incorrect_count, Time.now, Time.now]], 
           :validate => false, :timestamps => false,
           :on_duplicate_key_update => UPDATE_TEST_RESULT_COLUMNS)
 
@@ -86,7 +88,14 @@ class TestsController < ApplicationController
 
   def results
     @test = @subject.tests.find_by_id(params[:id])        
-    @results = TestResult.all(:conditions => ["test_id = ?",@test.id])
+    @classes = TestResult.all(:conditions => ["test_id = ?",@test.id], :group => "student_class").map { |tr| tr.student_class }
+  end
+
+  def class_results
+    @classes = ["WD345", "WF3345"]
+    @test = @subject.tests.find_by_id(params[:id])        
+    @results = TestResult.all(:conditions => ["test_id = ? and student_class = ?", @test.id, params[:class]])
+    @results.sort! {|a,b| a.user.name <=> b.user.name }
   end
 
   # GET /tests/new

@@ -19,10 +19,14 @@
   		<div class="nav main-nav">
   			<ul>
   				<li id="nav-home"><a href="/"><span>Home</span></a></li>
-  				<li id="nav-pass"><a href="/"><span>Pass a test</span></a></li>
-  				<li id="nav-teachers"><a href="/"><span>Teachers</span></a></li>
-  				<li id="nav-signin"><a href="<%= login_path %>"><span>Sign In</span></a></li>
-  				<li id="nav-signup"><a href="<%= login_path %>"><span>Sign Up</span></a></li>
+  				<% if current_user && current_user.teacher? %>
+            <li id="nav-signin"><a href="<%= user_subjects_path(current_user) %>"><span>My subjects</span></a></li>
+  				  <li id="nav-signin"><a href="<%= logout_path %>"><span>Sign out</span></a></li>
+  				<% else %>                                              
+            <li id="nav-pass"><a href="/"><span>Pass a test</span></a></li>
+  				  <li id="nav-signin"><a href="<%= login_path %>"><span>Teachers Sign In</span></a></li>
+            <li id="nav-signup"><a href="<%= login_path %>"><span>Sign Up</span></a></li>
+          <% end %>
   			</ul>
   		</div>
       <div class="clear"></div>

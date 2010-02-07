@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100202083053) do
+ActiveRecord::Schema.define(:version => 20100207185438) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -40,7 +40,10 @@ ActiveRecord::Schema.define(:version => 20100202083053) do
     t.integer  "incorrect_count"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "student_class"
   end
+
+  add_index "test_results", ["user_id", "test_id"], :name => "index_test_results_on_user_id_and_test_id", :unique => true
 
   create_table "tests", :force => true do |t|
     t.integer  "subject_id"

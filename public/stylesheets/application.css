@@ -155,7 +155,7 @@ a, a:link, a:visited {
 }
 
 .leftColumn .messages .error {
-	color:#FC7009;	
+	color:SandyBrown;	
 }
   
 .rightColumn {
@@ -163,14 +163,14 @@ a, a:link, a:visited {
 	float:left;
 	padding-bottom:15px;
 	padding-left:10px;  
-	width:450px;
+	width:460px;
 }  
 
 .rightColumn ul#list {
 /*	border-bottom:4px dashed #FFFDD8;*/
 	list-style-type:none;
-	float:left;              
-	padding:40px 20px 36px 0px;
+/*	float:left;              */
+	padding:40px 0px 36px 0px;
 }
 
 .rightColumn ul#list li {	
@@ -179,7 +179,7 @@ a, a:link, a:visited {
 }
 
 .rightColumn ul#list li a {
-	float:left;
+/*	float:left;*/
 	padding:10px 0 10px 34px;
 	text-decoration:none;                                                    
 }
@@ -191,9 +191,13 @@ a, a:link, a:visited {
 .rightColumn .form {
 	float:left;              
 	padding:40px 10px 36px 37px; 
+}                                      
+
+.leftColumn .form {
+	 padding-top:17px; 
 }
                           
-.rightColumn .form label {
+.rightColumn .form label, .leftColumn .form label {
 	font-size:120%;
 }
 
@@ -210,9 +214,20 @@ a, a:link, a:visited {
 	margin-top:5px;
 	padding:3px;
 	width:260px;
-}
+}                                                
+                                                 
+.leftColumn .form input {
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+	
+	border:0 solid white;
+	font-size:100%;
+	margin-top:5px;
+	padding:0;
+} 
 
-.rightColumn .form .submit input {
+.rightColumn .form .submit input, .leftColumn .form .submit input {
 	background:#FFFDD8 none repeat scroll 0 0;
 	border:2px solid #FFFDD8;
 	color:#617A77;
@@ -222,7 +237,13 @@ a, a:link, a:visited {
 	margin-bottom:18px;
 	margin-top:24px;
 	width:180px; 
+	cursor:pointer;
 }
+   
+.leftColumn .form input.correct_answer {
+	margin-right:5px;	
+}
+
 
 .rightColumn .answers-form {
 	float:left;              
@@ -266,18 +287,26 @@ a, a:link, a:visited {
 	font-size:120%;
 }    
 
+.links {
+	clear:both;
+}
+
 .leftColumn .links {
 	margin-top:50px;	
 }
 
-.leftColumn .links a {  
+.rightColumn .links {
+	margin-left:30px;	
+}
+
+.links a {  
 	display:block;
 	margin-left:4px;
 	text-decoration:none; 
 	font-size:150%; 
 }
 
-.leftColumn .links a span {
+.links a span, .rightColumn ul#list li .actions a span {
  	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
 	border-radius:5px;
@@ -286,7 +315,133 @@ a, a:link, a:visited {
 	padding:9px;
 }
 
-.rightColumn .message {
-	padding-top:54px;
-	margin-bottom:30px;
+.links a.redLink span, .rightColumn ul#list li .actions a.redLink span, 
+.fields .actions a.redLink span {
+	background-color:SandyBrown;
+	color:#617A77;
+}        
+
+a.greenLink span, a.greenLink:hover span {
+	background-color:LightGreen !important;
+	color:#617A77;
 }
+ 
+.rightColumn .links a span {
+	padding:5px;	
+}          
+
+.rightColumn .message {
+	margin-bottom:30px;
+}                           
+
+.rightColumn ul#list li .actions {
+	float:right;	
+	padding:0px 0 0px 50px;
+}  
+
+.rightColumn ul#list li .actions a {
+	font-size:50%;
+	text-decoration:none;
+	padding:10px 0 10px 5px;
+}                                 
+
+.rightColumn ul#list li .actions a:hover {
+	background:none
+}                           
+
+.rightColumn ul#list li .actions a span {
+	padding:2px 5px;
+}
+
+.rightColumn ul#list li label {
+	padding-top:5px;
+	padding-left:20px;
+}
+
+div.fields {
+	border-bottom:2px dashed #FFFDD8;
+	margin-right:10px;
+	padding:10px 0;
+}
+
+div.fields label.question-text {
+
+}
+ 
+div.fields .actions a, .form .actions a {
+	font-size:100%;
+	text-decoration:none;
+	padding:10px 0 10px 5px;
+		cursor:pointer;	
+}                                 
+
+div.fields .actions a:hover, .form .actions a:hover {
+	background:none;
+	cursor:pointer;	
+}                           
+
+div.fields .actions a span, .form .actions a span{
+	padding:1px 5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+ 	background-color:#FFFDD8;
+	color:#617A77; 
+	cursor:pointer;	
+}             
+
+.edit-question {
+	
+}
+
+.edit-question textarea {
+	margin:8px 25px;
+}
+
+p.actions {
+	margin-top:10px;
+}
+
+.all-results {
+	padding-top:35px	
+}
+
+.all-results div label {
+	display:inline-block;	
+}  
+
+.all-results .header {
+	padding:10px 0px;
+}  
+
+.all-results .header label {
+	font-size:120%
+}
+
+.all-results div .name {
+	width:300px;
+}
+
+.all-results div .count {
+	width:200px;         	 
+	text-align:center;
+}
+
+.all-results div .percent {
+	width:200px;      
+	text-align:center;   	
+} 
+                 
+.errorExplanation p {
+	padding-bottom:10px;
+}  
+
+.errorExplanation ul {
+ 	list-style-image:none;
+	list-style-position:outside;
+	list-style-type:none; 
+} 
+                    
+.errorExplanation {
+	color:SandyBrown;	 
+}  

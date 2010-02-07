@@ -1,25 +1,32 @@
-<h1><%= @teacher.name %>'s <%= @subject.title %> tests</h1>
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Actions</th>
-  </tr>
-
-<% @tests.each do |test| %>
-  <tr>  
-    <td><%= link_to "#{test.title} (#{test.questions.count})", user_subject_test_path(@teacher, @subject, test) %></td>    
-    <td>
-      <%= link_to 'Destroy', user_subject_test_path(@teacher, @subject, test), :confirm => 'Are you sure?', :method => :delete %>
-      <%= link_to 'Edit', edit_user_subject_test_path(@teacher, @subject, test) %>      
-      <%= link_to 'Pass', pass_user_subject_test_path(@teacher, @subject, test) %>      
-      <%= link_to 'View results', results_user_subject_test_path(@teacher, @subject, test) %>      
-    </td>
-  </tr>
+<% content_for :header do %>
+<%= link_to @teacher.name, user_subjects_path(@teacher) %> →
+<%= link_to @subject.title, user_subject_tests_path(@teacher, @subject) %>
 <% end %>
-</table>
 
-<br />
+<div class="leftColumn">
+  <h2><%= @subject.title %> tests →</h2>
+</div>
 
-<%= link_to 'New test', new_user_subject_test_path %>
-<%= link_to 'Go to all subjects', user_subjects_path %>
+<div class="rightColumn">
+  <ul id="list">
+    <% @tests.each do |test| %>
+    <li>
+      <%= link_to test.title, results_user_subject_test_path(@teacher, @subject, test) %>
+      <div class="actions">
+        <%= link_to '<span>edit</span>', edit_user_subject_test_path(@teacher, @subject, test), :title => "edit test" %>
+        <%= link_to '<span>try</span>', pass_user_subject_test_path(@teacher, @subject, test) %>
+        <%= link_to '<span>-</span>', user_subject_test_path(@teacher, @subject, test), :confirm => "Are you sure you want to delete #{test.title} test?", :method => :delete, :class => 'redLink', :title => "delete test" %>
+      </div>
+    </li>
+    <% end %>   
+  </ul>
+  <% if @tests.empty? %>
+    <div class="message">
+      no tests yet :-(
+    </div>
+  <% end %>  
+  
+  <div class="links">                                     
+    <%= link_to '<span>new test →</span>', new_user_subject_test_path %>
+  </div>    
+</div>

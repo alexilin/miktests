@@ -1,23 +1,30 @@
-<h1><%= @teacher.name %>'s subjects</h1>
-
-<table>
-  <tr>
-    <th align="left" style="width:300px">Title</th>
-    <th align="left">Actions</th>
-  </tr>
-
-<% @subjects.each do |subject| %>
-  <tr>
-    <td><%= link_to subject.title, user_subject_tests_path(@teacher, subject) %></td>
-    <td>
-    <%= link_to 'edit', edit_user_subject_path(@teacher, subject) %>
-    <%= link_to 'delete', user_subject_path(@teacher, subject), :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<% content_for :header do %>
+<%= link_to @teacher.name, user_subjects_path(@teacher) %>
 <% end %>
-</table>
 
-<br />
+<div class="leftColumn">
+  <h2>Your subjects →</h2>
+</div>
 
-<% if owner? %>           
-  <%= link_to 'New subject', new_user_subject_path %>
-<% end %>
+<div class="rightColumn">
+  <ul id="list">
+    <% @subjects.each do |subject| %>
+    <li>
+      <%= link_to subject.title, user_subject_tests_path(@teacher, subject) %>
+      <div class="actions">
+        <%= link_to '<span>edit</span>', edit_user_subject_path(@teacher, subject) %>
+        <%= link_to '<span>delete</span>', user_subject_path(@teacher, subject), :confirm => 'Are you sure?', :method => :delete, :class => 'redLink' %>
+      </div>
+    </li>
+    <% end %>   
+  </ul>
+  <% if @subjects.empty? %>
+    <div class="message">
+      no subjects yet :-(
+    </div>
+  <% end %>  
+  
+  <div class="links">                                     
+    <%= link_to '<span>new subject →</span>', new_user_subject_path %>
+  </div>    
+</div>

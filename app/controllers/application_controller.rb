@@ -26,4 +26,12 @@ class ApplicationController < ActionController::Base
       redirect_to(login_path)
     end
   end
+  
+  def only_for_owners
+    if !logged_in? || !current_user.teacher? || current_user.id != @teacher.id 
+      store_location
+      redirect_to(login_path)
+    end
+  end
+  
 end

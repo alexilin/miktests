@@ -1,20 +1,38 @@
-<h2><%= @test.title %> results</h2>
+<% content_for :header do %>
+<%= link_to @teacher.name, user_subjects_path(@teacher) %> →
+<%= link_to @subject.title, user_subject_tests_path(@teacher, @subject) %> →
+<%= @test.title %> results 
+<% end %>
 
-<table class="test_results">
+<div class="leftColumn">
+  <h2>Select class →</h2>
+</div>
+                        
+<div class="rightColumn">
+  <ul id="list">
+    <% @classes.each do |c| %>
+                              
+    <li><%= link_to c, class_results_user_subject_test_path(@teacher, @subject, @test, :class => c) %></li>
+    <% end %>   
+  </ul>
+  <% if @classes.empty? %>
+    <div class="message">
+      no classes yet :-(
+    </div>
+  <% end %>  
+</div>
+
+<!-- <table class="test_results">
   <tr>  
     <th>Student Name</th>
     <th>Correct / Incorrect</th>
     <th>Percent</th>
   </tr>   
-  <% for result in @results%>
+  <% for result in []%>
     <tr>
       <td><%= result.user.name %></td>
       <td><%= result.correct_count %> / <%= result.incorrect_count %></td>
       <td><%= result.percent %>%</td>
     </td>
   <% end %>
-</table>
-
-<br/>
-<br/>
-<%= link_to 'Go Home', user_subjects_path(@teacher)%>
+</table> -->
