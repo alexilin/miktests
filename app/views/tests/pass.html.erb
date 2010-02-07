@@ -1,7 +1,8 @@
 <% content_for :header do %>
 <%= link_to @teacher.name, dashboard_user_subjects_path(@teacher) %> → 
 <%= link_to @subject.title, dashboard_user_subject_tests_path(@teacher, @subject) %> →
-<%= link_to @test.title, before_pass_user_subject_test_path(@teacher, @subject, @test) %>
+<%= link_to @test.title, before_pass_user_subject_test_path(@teacher, @subject, @test) %> →
+<%= current_user.name %>
 <% end %>
 
 <div class="leftColumn">

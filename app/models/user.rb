@@ -46,8 +46,9 @@ class User < ActiveRecord::Base
   end                                  
   
   def self.create_student_user name
-    User.create(:login => Digest::SHA1.hexdigest(name), :name => name, :role => Role::STUDENT,
-      :email => "fake@email.com", :password => "fake_password", :password_confirmation => "fake_password")    
+    login = Digest::SHA1.hexdigest(name)
+    User.create(:login => login, :name => name, :role => Role::STUDENT,
+      :email => "#{login}@email.com", :password => "fake_password", :password_confirmation => "fake_password")    
   end
 
   def login=(value)
