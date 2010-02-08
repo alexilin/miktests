@@ -1,2 +1,5 @@
 public/questions/*.*
 public/answers/*.*
+bin
+*.DS_Store
+log
