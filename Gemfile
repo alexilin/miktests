@@ -11,5 +11,6 @@ gem "ar-extensions"
 gem "memcache-client"
 gem "jrails"
 gem "ruby-smpp"
+gem "mysql"
 
 disable_system_gems
