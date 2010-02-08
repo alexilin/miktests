@@ -4,8 +4,8 @@ module ApplicationHelper
     @teacher.id == current_user.id
   end       
 
-  def link_to_remove_fields(name, f)
-    f.hidden_field(:_destroy) + link_to_function("<span>#{name}</span>", "remove_fields(this)", :class => "redLink")
+  def link_to_remove_fields(name, f, field_name = :_destroy)
+    f.hidden_field(field_name) + link_to_function("<span>#{name}</span>", "remove_fields(this)", :class => "redLink", :title => "remove")
   end
 
   def link_to_add_fields(name, f, association)

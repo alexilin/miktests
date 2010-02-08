@@ -217,12 +217,8 @@ a, a:link, a:visited {
 }                                                
                                                  
 .leftColumn .form input {
-	-moz-border-radius:5px;
-	-webkit-border-radius:5px;
-	border-radius:5px;
-	
-	border:0 solid white;
-	font-size:100%;
+  border:2px solid white;
+	font-size:80%;
 	margin-top:5px;
 	padding:0;
 } 
@@ -363,10 +359,6 @@ div.fields {
 	margin-right:10px;
 	padding:10px 0;
 }
-
-div.fields label.question-text {
-
-}
  
 div.fields .actions a, .form .actions a {
 	font-size:100%;
@@ -381,7 +373,7 @@ div.fields .actions a:hover, .form .actions a:hover {
 }                           
 
 div.fields .actions a span, .form .actions a span{
-	padding:1px 5px;
+	padding:0px 5px;
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
 	border-radius:5px;
@@ -390,13 +382,18 @@ div.fields .actions a span, .form .actions a span{
 	cursor:pointer;	
 }             
 
-.edit-question {
-	
-}
-
 .edit-question textarea {
 	margin:8px 25px;
 }
+
+.edit-question input.question-image {
+	margin:8px 25px;
+}                    
+
+.edit-question input.answer-image {
+	                               
+}
+
 
 p.actions {
 	margin-top:10px;

@@ -1,7 +1,16 @@
 <div class="fields">
   <p class="actions edit-question">  
     <%= f.label :question, "Question", :class => 'question-text' %> <%= link_to_remove_fields "delete question", f %> <br />
-    <%= f.text_area :question, :rows => 3 %>
+    <%= f.text_area :question, :rows => 3 %><br />
+    <%= f.label :image_file, "Question image", :class => 'question-text' %> 
+    <% unless f.object.image_url.blank? %>
+    <span class="fields">
+    - <%= File.basename(f.object.image_url) %>      
+      <%= f.hidden_field(:image_url) %>
+      <%= link_to_function("<span>delete image</span>", "remove_image(this)", :class => "redLink") %>
+    </span>
+    <% end %>
+    <br /> <%= f.file_field :image_file, :class => "question-image" %>    
   </p>             
   <label style="margin-bottom:2px">Answers</label>
   <% f.fields_for :answers do |builder| %>

@@ -4,7 +4,6 @@
 Edit <%= @test.title %>
 <% end %>
 
-
-<% form_for(@test, :url => user_subject_test_path(@teacher, @subject, @test), :method => "put") do |f| %>
+<% form_for(@test, :url => user_subject_test_path(@teacher, @subject, @test), :method => "put", :html => { :multipart => true }) do |f| %>
   <%= render "form", :f => f %>      
 <% end %>
