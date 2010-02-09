@@ -4,8 +4,8 @@ class CreateSpecialUsers < ActiveRecord::Migration
       t.integer :role, :default => 0 
     end             
     
-    # User.create :login => 'alex.ilin', :name => "Alex Ilin", :email => "alex.a.ilin@gmail.com", 
-    #   :password => "initial_password", :password_confirmation => "initial_password", :role => Role::ADMIN
+    User.create :login => 'alex.ilin', :name => "Alex Ilin", :email => "alex.a.ilin@gmail.com", 
+          :password => "initial_password", :password_confirmation => "initial_password", :role => Role::ADMIN
   end
 
   def self.down
@@ -13,6 +13,6 @@ class CreateSpecialUsers < ActiveRecord::Migration
       t.remove :role 
     end
     
-    # User.delete_all("login = 'alex.ilin'")
+    User.delete_all("login = 'alex.ilin'")
   end
 end
