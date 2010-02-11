@@ -6,10 +6,13 @@
 <% end %>
 
 <div class="leftColumn">
-  <!-- <h2>Question <%= @qnumber + 1 %></h2> -->
-
   <div class="question">
     <%= @qnumber + 1 %>. <%= @question.question %>      
+    <% unless @question.image_url.blank? %>
+      <p class="q-image">
+       <img src="/<%= @question.image_url %>" />
+      </p>
+    <% end %>
   </div>
 </div>
        

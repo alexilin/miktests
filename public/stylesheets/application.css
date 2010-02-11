@@ -442,3 +442,7 @@ p.actions {
 .errorExplanation {
 	color:SandyBrown;	 
 }  
+
+p.q-image {
+	margin:10px 0px 0px 15px;
+}
