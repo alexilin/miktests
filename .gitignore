@@ -2,3 +2,4 @@ public/questions/*.*
 public/answers/*.*
 *.DS_Store
 log
+.bundle
