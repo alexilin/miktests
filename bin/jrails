@@ -1,3 +1,0 @@
-#!/Users/ai/.rvm/ruby-1.9.1-p376/bin/ruby
-require File.join(File.dirname(__FILE__), "../vendor/bundler_gems/environment")
-load File.join(File.dirname(__FILE__), "../vendor/bundler_gems/gems/jrails-0.6.0/bin/jrails")
