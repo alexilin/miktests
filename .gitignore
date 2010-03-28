@@ -1,5 +1,6 @@
 public/questions/*.*
-public/answers/*.*
+public/answers/*.*  
+public/export/*.*
 *.DS_Store
 log
 .bundle

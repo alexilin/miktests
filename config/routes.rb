@@ -19,7 +19,8 @@ ActionController::Routing::Routes.draw do |map|
           :pass => :any,
           :result => :any,
           :results => :any,
-          :class_results => :any
+          :class_results => :any,
+          :export_class_results => :any
         } 
     end
   end      

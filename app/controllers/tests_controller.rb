@@ -6,7 +6,7 @@ class TestsController < ApplicationController
 
   before_filter :load_teacher, :load_subject
   before_filter :only_for_owners, :except => [:dashboard, :before_pass, :pass, :result]
-
+  
   def dashboard
     @tests = @subject.tests.all
   end
@@ -91,11 +91,33 @@ class TestsController < ApplicationController
     @classes = TestResult.all(:conditions => ["test_id = ?",@test.id], :group => "student_class").map { |tr| tr.student_class }
   end
 
-  def class_results
-    @classes = ["WD345", "WF3345"]
+  def class_results    
     @test = @subject.tests.find_by_id(params[:id])        
     @results = TestResult.all(:conditions => ["test_id = ? and student_class = ?", @test.id, params[:class]])
     @results.sort! {|a,b| a.user.name <=> b.user.name }
+  end     
+              
+  
+  EXPORT_FILES_DIR = "#{RAILS_ROOT}/public/export/"
+  def export_class_results                  
+    class_name = params[:class]                     
+    
+    @test = @subject.tests.find_by_id(params[:id])        
+    results = TestResult.all(:conditions => ["test_id = ? and student_class = ?", @test.id, class_name])
+    results.sort! {|a,b| a.user.name <=> b.user.name }
+                               
+    test_name = @test.title      
+    file_name = "#{test_name}-#{class_name}-results.csv" 
+    file_path = File.join(EXPORT_FILES_DIR, file_name)
+    File.open(file_path, "wb") do |f|
+      f << "Student name,Class name,Test,Results\n"
+      for result in results
+        f << "#{result.user.name},#{class_name},#{test_name},#{result.percent}%\n"              
+      end
+    end
+      
+    send_file file_path, :type => "application/excel"#, :x_sendfile=>true
+    # render :file => file_path, :layout => false
   end
 
   # GET /tests/new
