@@ -1,0 +1,5 @@
+check process miktests_unicorn
+  with pidfile /mnt/miktests/tmp/pids/unicorn.pid
+  start program = "/mnt/miktests/bin/run bin/unicorn start"
+  stop program = "/mnt/miktests/bin/run bin/unicorn stop"
+  group miktests
