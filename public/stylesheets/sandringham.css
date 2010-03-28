@@ -2,6 +2,9 @@
 
 /* CSS Document */
 
+body {
+	 font-family:Verdana,Arial,Helvetica,sans-serif;
+}
 #bar {
 	position: relative;
 	left: -1px;
@@ -511,7 +514,10 @@ ul#list .actions {
 }
 
 .all-results {
-	padding-top:10px	
+	padding-top:10px;	
+	font-family:Verdana, Arial, Helvetica, sans-serif; 
+	font-size:0.8em;
+	padding-top:10px;
 }
 
 .all-results div label {

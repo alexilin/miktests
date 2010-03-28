@@ -6,7 +6,7 @@
 <% end %>
 
 <div class="question">
-  <%= @qnumber + 1 %>. <%= @question.question %>      
+  <%= @question.question %>      
   <% unless @question.image_url.blank? %>
     <p class="q-image">
      <img src="/<%= @question.image_url %>" />
@@ -15,7 +15,7 @@
 </div>
 
 <div class="answers-form">          
-  <% form_tag(pass_user_subject_test_path(@teacher, @subject, @test, :q => @qnumber)) do %>
+  <% form_tag(pass_user_subject_test_path(@teacher, @subject, @test)) do %>
     <% for a in @question.answers.all %>
       <div class="answer">
         <%= radio_button_tag "answer", a.id %> <span><%= a.answer %></span> <br/>

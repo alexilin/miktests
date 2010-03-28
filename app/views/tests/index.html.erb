@@ -11,7 +11,7 @@
     <%= link_to test.title, results_user_subject_test_path(@teacher, @subject, test) %>
     <div class="actions">
       <%= link_to 'edit', edit_user_subject_test_path(@teacher, @subject, test), :title => "edit test" %>
-      <%= link_to 'try test', pass_user_subject_test_path(@teacher, @subject, test) %>
+      <!-- <%= link_to 'try test', pass_user_subject_test_path(@teacher, @subject, test) %> -->
       <%= link_to 'delete', user_subject_test_path(@teacher, @subject, test), :confirm => "Are you sure you want to delete #{test.title} test?", :method => :delete, :class => 'redLink', :title => "delete test" %>
     </div>
   </li>

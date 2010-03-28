@@ -6,14 +6,14 @@
 
 <h1><%= @test.title %> results for class <%= params[:class] %></h1>
 
-<%= link_to 'download excel file', export_class_results_user_subject_test_path(@teacher, @subject, @test, :class => params[:class]), :target => "_blank" %>
-
 <% if @results.empty? %>
   <div class="messages">
     no results yet :-(
   </div>
 <% else %>    
   <div class="all-results">
+    <%= link_to 'download excel file', export_class_results_user_subject_test_path(@teacher, @subject, @test, :class => params[:class]), :target => "_blank" %>
+    
     <div class="table-header">
       <label class="name">Name</label>
       <label class="count">Corrent / Incorrect</label>
