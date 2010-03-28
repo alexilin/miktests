@@ -1,26 +1,25 @@
-<div class="leftColumn" style="width:600px !important">
-  <div class="form">          
-    <% f.fields_for :questions do |builder| %>
-      <%= render "question_fields", :f => builder %>
-    <% end %>
+<h1>Title and password</h1>
 
-    <p class="actions"><%= link_to_add_fields "add question", f, :questions %></p>
+<div class="form">          
+  <p><%= label_tag 'Test Title' %><br/>
+    <%= f.text_field :title %>
+  </p>               
 
-    <p class="submit"><%= f.submit 'save →' %></p>    
-  </div>                        
+  <p><%= label_tag 'Access Password' %><br/>
+    <%= f.password_field :password %></p>
+
+  <p class="submit"><%= f.submit 'save →' %></p>    
 </div>
 
-<div class="rightColumn" style="width:300px !important">
-    <div class="form">          
-      <p><%= label_tag 'Test Title' %><br/>
-        <%= f.text_field :title %>
-      </p>               
+<h1>Questions</h1>
 
-      <p><%= label_tag 'Access Password' %><br/>
-        <%= f.password_field :password %></p>
+<div class="form">          
+  <% f.fields_for :questions do |builder| %>
+    <%= render "question_fields", :f => builder %>
+  <% end %>
 
-      <p class="submit"><%= f.submit 'save →' %></p>    
-    </div>
-</div>
+  <p class="actions"><%= link_to_add_fields "add question", f, :questions %></p>
 
+  <p class="submit"><%= f.submit 'save →' %></p>    
+</div>                        
 

@@ -3,23 +3,19 @@
 Edit <%=@subject.title %>
 <% end %>
 
-<div class="leftColumn">
-  <h2>Subject information →</h2>
-  
-  <div class="messages">
-    <p class="error"><%= flash[:error] %></p>
-  </div>  
-</div>
+<h1>Subject information</h>
 
-<div class="rightColumn">
-  <div class="form">          
-  <% form_for(@subject, :url => user_subject_path(current_user, @subject), :method => "put") do |f| %>
-    <%= f.error_messages %>
-  
-    <p><%= label_tag 'title' %><br/>
-    <%= f.text_field :title %></p>
+<div class="messages">
+  <p class="error"><%= flash[:error] %></p>
+</div>  
 
-    <p class="submit"><%= f.submit 'update →' %></p>
-    <% end -%>
-  </div>
+<div class="form">          
+<% form_for(@subject, :url => user_subject_path(current_user, @subject), :method => "put") do |f| %>
+  <%= f.error_messages %>
+
+  <p><%= label_tag 'title' %><br/>
+  <%= f.text_field :title %></p>
+
+  <p class="submit"><%= f.submit 'update' %></p>
+  <% end -%>
 </div>

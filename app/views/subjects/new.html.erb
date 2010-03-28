@@ -3,23 +3,20 @@
 New subject
 <% end %>
 
-<div class="leftColumn">
-  <h2>Subject information →</h2>
-  
-  <div class="messages">
-    <p class="error"><%= flash[:error] %></p>
-  </div>  
-</div>
+<h1>Subject information</h1>
 
-<div class="rightColumn">
-  <div class="form">          
-  <% form_for(@subject, :url => user_subjects_path, :method => "post") do |f| %>
-    <%= f.error_messages %>
-  
-    <p><%= label_tag 'title' %><br/>
-    <%= f.text_field :title %></p>
+<div class="messages">
+  <p class="error"><%= flash[:error] %></p>
+</div>  
 
-    <p class="submit"><%= f.submit 'create →' %></p>
-    <% end -%>
-  </div>
+
+<div class="form">          
+<% form_for(@subject, :url => user_subjects_path, :method => "post") do |f| %>
+  <%= f.error_messages %>
+
+  <p><%= label_tag 'title' %><br/>
+  <%= f.text_field :title %></p>
+
+  <p class="submit"><%= f.submit 'create →' %></p>
+  <% end -%>
 </div>

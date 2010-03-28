@@ -2,28 +2,24 @@
 Administration
 <% end %>
 
-<div class="leftColumn">
-  <h2>All teachers →</h2>
-</div>
+<h1>All teachers</h1>
 
-<div class="rightColumn">
-  <ul id="list">
-    <% @teachers.each do |t| %>
-    <li>
-      <%= link_to t.name, :action => "edit_teacher", :id => t.id %>
-      <div class="actions">
-        <%= link_to '<span>delete</span>', {:action => "delete_teacher", :id => t.id}, :confirm => 'Are you sure?', :method => :delete, :class => 'redLink' %>
-      </div>
-    </li>
-    <% end %>   
-  </ul>
-  <% if @teachers.empty? %>
-    <div class="message">
-      no teachers yet :-(
+<ul id="list">
+  <% @teachers.each do |t| %>
+  <li>
+    <%= link_to t.name, :action => "edit_teacher", :id => t.id %>
+    <div class="actions">
+      <%= link_to 'delete', {:action => "delete_teacher", :id => t.id}, :confirm => 'Are you sure?', :method => :delete, :class => 'redLink' %>
     </div>
-  <% end %>  
-  
-  <div class="links">                                     
-    <%= link_to '<span>new teacher →</span>', :action => "new_teacher" %>
-  </div>    
-</div>
+  </li>
+  <% end %>   
+</ul>
+<% if @teachers.empty? %>
+  <div class="message">
+    no teachers yet :-(
+  </div>
+<% end %>  
+
+<div class="links">                                     
+  <%= link_to 'new teacher', :action => "new_teacher" %>
+</div>    

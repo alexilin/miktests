@@ -21,17 +21,17 @@ class ApplicationController < ActionController::Base
   end
   
   def only_for_admins
-    if !logged_in? || !current_user.admin?
-      store_location
-      redirect_to(login_path)
-    end
+    return if logged_in? && current_user.admin?
+
+    store_location
+    redirect_to(login_path)
   end
   
   def only_for_owners
-    if !logged_in? || !current_user.teacher? || current_user.id != @teacher.id 
-      store_location
-      redirect_to(login_path)
-    end
-  end
-  
+    return if logged_in? && current_user.teacher? && current_user.id == @teacher.id 
+
+    store_location
+    redirect_to(login_path)
+  end                
+    
 end

@@ -7,7 +7,7 @@
     <span class="fields">
     - <%= File.basename(f.object.image_url) %>      
       <%= f.hidden_field(:image_url) %>
-      <%= link_to_function("<span>delete image</span>", "remove_image(this)", :class => "redLink") %>
+      <%= link_to_function("delete image", "remove_image(this)", :class => "redLink") %>
     </span>
     <% end %>
     <br /> <%= f.file_field :image_file, :class => "question-image" %>    

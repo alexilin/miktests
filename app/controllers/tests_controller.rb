@@ -142,7 +142,7 @@ class TestsController < ApplicationController
     @test.destroy
 
     respond_to do |format|
-      format.html { redirect_to(tests_url) }
+      format.html { redirect_to user_subject_tests_path }
       format.xml  { head :ok }
     end
   end

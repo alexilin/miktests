@@ -4,23 +4,19 @@
 <%= @test.title %> results 
 <% end %>
 
-<div class="leftColumn">
-  <h2>Select class →</h2>
-</div>
-                        
-<div class="rightColumn">
-  <ul id="list">
-    <% @classes.each do |c| %>
-                              
-    <li><%= link_to c, class_results_user_subject_test_path(@teacher, @subject, @test, :class => c) %></li>
-    <% end %>   
-  </ul>
-  <% if @classes.empty? %>
-    <div class="message">
-      no classes yet :-(
-    </div>
-  <% end %>  
-</div>
+<h1>Select class</h1>
+                      
+<ul id="list">
+  <% @classes.each do |c| %>
+                            
+  <li><%= link_to c, class_results_user_subject_test_path(@teacher, @subject, @test, :class => c) %></li>
+  <% end %>   
+</ul>
+<% if @classes.empty? %>
+  <div class="message">
+    no classes yet :-(
+  </div>
+<% end %>  
 
 <!-- <table class="test_results">
   <tr>  

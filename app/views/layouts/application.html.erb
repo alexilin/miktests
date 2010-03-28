@@ -15,10 +15,11 @@
           <div class="home_wrapper"><a href="/"></a></div>
           <div align="right" class="header-links">
     				<% if current_user && current_user.teacher? %>
-              <a href="<%= user_subjects_path(current_user) %>"><span>My subjects</span></a> | 
-    				  <a href="<%= logout_path %>"><span>Sign out</span></a>
-    				<% else %>                                              
-    				  <a href="<%= login_path %>"><span>Teachers Sign In</span></a>
+    				  <%= link_to 'My Account', :controller => :admin, :action => "edit_teacher", :id => current_user.id %> | 
+              <%= link_to 'My subjects', user_subjects_path(current_user) %> | 
+              <%= link_to 'Sign out', logout_path %>
+    				<% else %>                              
+              <%= link_to 'Teachers Sign In', login_path %>                
             <% end %>
           </div>
     			

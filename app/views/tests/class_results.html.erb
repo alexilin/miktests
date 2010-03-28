@@ -4,20 +4,15 @@
 <%= @test.title %> results 
 <% end %>
 
-<div class="leftColumn" style="width:900px !important">
-  <h2><%= @test.title %> results </h2>
-  <div class="messages">
-    for class <%= params[:class] %>
-  </div>
+<h1><%= @test.title %> results for class <%= params[:class] %></h1>
 
-  <% if @results.empty? %>
-    <div class="messages">
-      no results yet :-(
-    </div>
-  <% else %>  
-  
+<% if @results.empty? %>
+  <div class="messages">
+    no results yet :-(
+  </div>
+<% else %>    
   <div class="all-results">
-    <div class="header">
+    <div class="table-header">
       <label class="name">Name</label>
       <label class="count">Corrent / Incorrect</label>
       <label class="percent">Percent</label>
@@ -30,5 +25,4 @@
     </div>
     <% end %>
   </div>
-  <% end %>
-</div>                       
+<% end %>

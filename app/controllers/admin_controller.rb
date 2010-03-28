@@ -1,6 +1,16 @@
 class AdminController < ApplicationController
 
-  before_filter :only_for_admins
+  before_filter :only_for_admins, :except => [:edit_teacher, :update_teacher] 
+  before_filter :only_for_admins_or_owners, :only => [:edit_teacher, :update_teacher] 
+
+  def only_for_admins_or_owners
+    return if logged_in? && current_user.admin?
+    return if logged_in? && current_user.teacher? && current_user.id == params[:id].to_i
+    
+    store_location
+    redirect_to(login_path)    
+  end
+
   
   def index
     @teachers = User.all(:conditions => ["role = ?", Role::TEACHER])

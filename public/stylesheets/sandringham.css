@@ -434,13 +434,14 @@ margin-top: -4px;
 }      
             
 .breadcrumbs {
+	font-family:Verdana,Arial,Helvetica,sans-serif;
+	font-size:0.8em;
+	color:gray;
 	margin:5px 0px;
 } 
 
 .breadcrumbs a { 
-		font-family:Verdana,Arial,Helvetica,sans-serif;
-		font-size:0.8em;
-		color:gray;
+	color:gray;	
 }
  
 .header-links a, .header-links a:hover {
@@ -471,7 +472,18 @@ div.form p label {
 
 div.form p input {  
 	font-size:1.2em;
+}               
+
+div.form div.fieldWithErrors {
+	margin-top:-13px;
+}  
+               
+div.form div.fieldWithErrors input {
+	font-size:0.9em;
+	line-height:0.9em;
+	margin-left:5px;
 }
+
 
 p.error { color:#CC0000;}
 
@@ -486,3 +498,90 @@ div.answers-form {
 div.answers-form p.submit input {
 	font-size:1.2em;
 }
+
+ul#list {
+	list-style-type:none;
+ 	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	font-size:0.8em;
+}
+
+ul#list .actions {
+	float:right;
+	margin-right:30px;
+}
+
+.all-results {
+	padding-top:10px	
+}
+
+.all-results div label {
+	display:inline-block;	
+}  
+
+.all-results .table-header {
+	padding:10px 0px;
+}  
+
+.all-results .table-header label {
+	color:#CC0000;
+}
+
+.all-results div .name {
+	width:300px;
+}
+
+.all-results div .count {
+	width:150px;         	 
+	text-align:center;
+}
+
+.all-results div .percent {
+	width:150px;      
+	text-align:center;   	
+} 
+
+
+div.fields {
+	border-bottom:1px solid gray;
+	margin-right:10px;
+	padding:10px 0;
+}
+ 
+div.fields .actions a, .form .actions a {
+	text-decoration:none;
+	padding:0px 0 0px 5px;
+	cursor:pointer;	
+}                                 
+
+div.fields .actions a:hover, .form .actions a:hover {
+	background:none;
+	cursor:pointer;	
+}                           
+
+div.fields .actions a span, .form .actions a span{
+	padding:0px 5px;
+  cursor:pointer;	
+}             
+
+.edit-question textarea {
+	margin:8px 25px;
+}
+
+.edit-question input.question-image {
+	margin:8px 25px;
+}                    
+
+.errorExplanation p {
+}  
+
+.errorExplanation ul {
+ 	list-style-image:none;
+	list-style-position:outside;
+	list-style-type:none;                          
+		font-size:0.75em;
+} 
+                    
+.errorExplanation {
+	color:#CC0000;	    
+	font-family:Verdana,Arial,Helvetica,sans-serif;
+}  
