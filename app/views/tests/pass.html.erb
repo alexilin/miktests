@@ -5,7 +5,6 @@
 <%= current_user.name %>
 <% end %>
 
-<div class="leftColumn">
   <div class="question">
     <%= @qnumber + 1 %>. <%= @question.question %>      
     <% unless @question.image_url.blank? %>
@@ -14,9 +13,7 @@
       </p>
     <% end %>
   </div>
-</div>
-       
-<div class="rightColumn">
+
   <div class="answers-form">          
     <% form_tag(pass_user_subject_test_path(@teacher, @subject, @test, :q => @qnumber)) do %>
       <% for a in @question.answers.all %>
@@ -30,4 +27,3 @@
       </p>
     <% end %>
   </div>
-</div>

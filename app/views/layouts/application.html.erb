@@ -1,49 +1,42 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
 <html id="tests-com" lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title>Subjects: <%= controller.action_name %></title>
+  <title>Sandringham School Tests</title>
   <%= javascript_include_tag :defaults %>
-  <%= stylesheet_link_tag 'application' %>
-</head>
-<body>
- 
-  <div class="section content">
 
-  	<div class="header page">
+  <%= stylesheet_link_tag 'sandringham' %>
 
-  		<div class="branding">
-  			<a href="/" id="logo">Sandringham</a>
-  		</div>
-
-  		<div class="nav main-nav">
-  			<ul>
-  				<li id="nav-home"><a href="/"><span>Home</span></a></li>
-  				<% if current_user && current_user.teacher? %>
-            <li id="nav-signin"><a href="<%= user_subjects_path(current_user) %>"><span>My subjects</span></a></li>
-  				  <li id="nav-signin"><a href="<%= logout_path %>"><span>Sign out</span></a></li>
-  				<% else %>                                              
-            <li id="nav-pass"><a href="/"><span>Pass a test</span></a></li>
-  				  <li id="nav-signin"><a href="<%= login_path %>"><span>Teachers Sign In</span></a></li>
-            <li id="nav-signup"><a href="<%= login_path %>"><span>Sign Up</span></a></li>
-          <% end %>
-  			</ul>
-  		</div>
-      <div class="clear"></div>
-    </div>
-  </div>
-	<div class="section content-main">
-	  <div class="ripTop"></div>
-	  <div class="ripContentWrapper">
-	    <div class="ripHeader">
-	      <%= yield :header %>  	     
-	    </div>
-	    <div class="ripContent">
-        <%= yield %>  	     
-	    </div>  	   
-	  </div>
-	        
-	</div>
-
+  <body bgcolor="#FFFFFF" text="#000000" leftmargin="0" topmargin="0">
+    <table width="959" border="0" align="center" cellpadding="0" cellspacing="0" id="home">
+      <tr>
+        <td colspan="6" width="959" height="193" style="background:url('/images/new_banner_wide_home.jpg')" valign="bottom">
+          <div class="home_wrapper"><a href="/"></a></div>
+          <div align="right" class="header-links">
+    				<% if current_user && current_user.teacher? %>
+              <a href="<%= user_subjects_path(current_user) %>"><span>My subjects</span></a> | 
+    				  <a href="<%= logout_path %>"><span>Sign out</span></a>
+    				<% else %>                                              
+    				  <a href="<%= login_path %>"><span>Teachers Sign In</span></a>
+            <% end %>
+          </div>
+    			
+        </td>
+      </tr>
+      <tr>
+        <td colspan="6"><img src="/images/red.gif" width="959" height="8"></td>
+      </tr>
+      <tr>                                    
+        <td width="660" rowspan="2" valign="top">
+          <div class="breadcrumbs"><%= yield :header %></div>
+          <%= yield %>  	     
+        </td>
+        <td width="1" rowspan="2" bgcolor="#aaaaaa"><em><img src="/images/spacer.gif" width="1" height="30"></em></td>
+        <td width="7" rowspan="2"><img src="/images/spacer.gif" width="3" height="30"></td>
+        <td width="280" valign="top">
+          <%= yield :sidebar %>  	                          
+        </td></tr>
+     </table>
 </body>
 </html>

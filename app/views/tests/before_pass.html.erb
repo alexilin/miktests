@@ -4,27 +4,25 @@
 <%= link_to @test.title, before_pass_user_subject_test_path(@teacher, @subject, @test) %>
 <% end %>
 
-<div class="leftColumn">
-  <h2>Enter your information →</h2>
-  
-  <div class="messages">
-    <p class="error"><%= flash[:notice] %></p>
-  </div>  
-</div>
 
-<div class="rightColumn">
-  <div class="form">          
-    <% form_tag before_pass_user_subject_test_path(@teacher, @subject, @test) do -%>
-    <p><%= label_tag 'Your name' %><br/>
-    <%= text_field_tag 'test[student_name]', @student_name %></p>
+<h1>Enter your information</h1>
 
-    <p><%= label_tag 'Class name' %><br/>
-    <%= text_field_tag 'test[student_class]', @student_class %></p>
+<div class="messages">
+  <p class="error"><%= flash[:notice] %></p>
+</div>  
 
-    <p><%= label_tag 'Your test access password' %><br/>
-    <%= password_field_tag 'test[test_password]' %></p>
 
-    <p class="submit"><%= submit_tag 'start test →' %></p>
-    <% end -%>
-  </div>
+<div class="form">          
+  <% form_tag before_pass_user_subject_test_path(@teacher, @subject, @test) do -%>
+  <p><%= label_tag 'Your name' %><br/>
+  <%= text_field_tag 'test[student_name]', @student_name, :size => 30 %></p>
+
+  <p><%= label_tag 'Class name' %><br/>
+  <%= text_field_tag 'test[student_class]', @student_class, :size => 30 %></p>
+
+  <p><%= label_tag 'Test access password' %><br/>
+  <%= password_field_tag 'test[test_password]', "", :size => 30 %></p>
+
+  <p class="submit"><%= submit_tag 'start test →' %></p>
+  <% end -%>
 </div>

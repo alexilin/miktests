@@ -1,11 +1,16 @@
-<div class="leftColumn">
-  <h2>Select your teacher →</h2>
+<div class="left">
+  <img src="/images/homepage_2008_top.jpg" width="287" height="300"/>
+</div>
+<div class="left" style="margin-left:10px">
+  <h1>Sandringham School Tests</h1>
+  <p>To start using it select your teacher →</p>
 </div>
 
-<div class="rightColumn">
-  <ul id="list">
-    <% for t in @teachers %>                                
-    <li><%= link_to t.name, dashboard_user_subjects_path(t) %></li>
-    <% end %> 
-  </ul>
-</div>
+<% content_for :sidebar do %>
+<h3>Select your teacher</h3>
+
+<% for t in @teachers %>                                
+<p><%= link_to t.name, dashboard_user_subjects_path(t) %></p>
+<% end %> 
+
+<% end %>

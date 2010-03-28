@@ -3,19 +3,16 @@
 <%= link_to @subject.title, dashboard_user_subject_tests_path(@teacher, @subject) %>
 <% end %>
 
-<div class="leftColumn">
-  <h2>Select a test →</h2>
-</div>
+<h1>Select a test →</h1>
 
-<div class="rightColumn">
-  <ul id="list">
+<% content_for :sidebar do %>
+    <h3>Select a test</h3>
+
     <% for test in @tests %>
-    <li><%= link_to test.title, before_pass_user_subject_test_path(@teacher, @subject, test) %></li>
+    <p><%= link_to test.title, before_pass_user_subject_test_path(@teacher, @subject, test) %></p>
     <% end %>
-  </ul>                                                                                        
-  <% if @tests.empty? %>
-    <div class="message">
+    
+    <% if @tests.empty? %>    
       no tests yet :-(
-    </div>
-  <% end %>    
-</div>
+    <% end %>    
+<% end %>
