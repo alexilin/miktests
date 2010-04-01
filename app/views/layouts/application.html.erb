@@ -10,21 +10,24 @@
 
   <body bgcolor="#FFFFFF" text="#000000" leftmargin="0" topmargin="0">
     <table width="959" border="0" align="center" cellpadding="0" cellspacing="0" id="home">
+      <% if @show_header_banner %>
       <tr>
         <td colspan="6" width="959" height="193" style="background:url('/images/new_banner_wide_home.jpg')" valign="bottom">
           <div class="home_wrapper"><a href="/"></a></div>
           <div align="right" class="header-links">
-    				<% if current_user && current_user.teacher? %>
-    				  <%= link_to 'My Account', :controller => :admin, :action => "edit_teacher", :id => current_user.id %> | 
-              <%= link_to 'My subjects', user_subjects_path(current_user) %> | 
-              <%= link_to 'Sign out', logout_path %>
-    				<% else %>                              
-              <%= link_to 'Teachers Sign In', login_path %>                
-            <% end %>
-          </div>
-    			
+            <%= render :partial => "partials/main_navigation" %>
+          </div>    			
         </td>
-      </tr>
+      </tr>                       
+      <% else %>
+      <tr>                              
+        <td colspan="6" width="959" valign="bottom">
+          <div align="right" class="mini-header-links">
+            <%= render :partial => "partials/main_navigation" %>
+          </div>    			          
+        <td>
+      </tr>                                   
+      <% end %>
       <tr>
         <td colspan="6"><img src="/images/red.gif" width="959" height="8"></td>
       </tr>

@@ -40,6 +40,8 @@ class TestsController < ApplicationController
   end
 
   def pass        
+    @show_header_banner = false
+    
     @test = @subject.tests.find_by_id(params[:id])        
     if_student_enters_access_psw? @test do 
       # save answer if needed

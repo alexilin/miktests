@@ -9,9 +9,13 @@ class ApplicationController < ActionController::Base
 
   # Scrub sensitive parameters from your log
   filter_parameter_logging :password, :password_confirmation
-  
+    
   protected
-                                    
+  
+  def initialize
+    @show_header_banner = true
+  end               
+  
   def load_teacher                                               
     @teacher = User.find params[:user_id], :conditions => ["role = ?", Role::TEACHER]
   end

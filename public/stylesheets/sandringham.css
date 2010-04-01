@@ -369,11 +369,15 @@ padding: 0;
 	font-size:0.75em;
 	line-height:0.7em;
 	margin-left:5px;
-	
-	
 	font-size: .75em;	
-	}	
-	
+}	
+
+#home p.welcome-message	{
+	font-size:0.9em;
+	line-height:1.3em;
+	margin-left:5px;
+}  
+
 #home .small {
 	font-size: 0.7em;
 	line-height: 1.3em;
@@ -436,6 +440,26 @@ margin-top: -4px;
 	color:white !important;
 }      
             
+.header-links a, .header-links a:hover {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color:white !important;
+	text-decoration:none;
+	margin:0px 20px;
+}
+
+.mini-header-links {
+	padding-right:5px;
+	padding-bottom:2px;
+	color:black !important;
+}      
+            
+.mini-header-links a, .mini-header-links a:hover {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color:black !important;
+	text-decoration:none;
+	margin:0px 20px;
+}
+
 .breadcrumbs {
 	font-family:Verdana,Arial,Helvetica,sans-serif;
 	font-size:0.8em;
@@ -447,13 +471,6 @@ margin-top: -4px;
 	color:gray;	
 }
  
-.header-links a, .header-links a:hover {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
-	color:white !important;
-	text-decoration:none;
-	margin:0px 20px;
-}
-
 div.home_wrapper {
   height:160px;
 	width:900px; 
